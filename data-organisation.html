@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Reproducible RDM workflows for tabular data</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Eirini Zormpa" />
+    <script src="data-organisation_files/header-attrs-2.10/header-attrs.js"></script>
+    <link href="data-organisation_files/countdown-0.3.5/countdown.css" rel="stylesheet" />
+    <script src="data-organisation_files/countdown-0.3.5/countdown.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Reproducible RDM workflows for tabular data
+### Eirini Zormpa
+### 2022-04-28 <em>(Updated: 2022-03-29)</em>
+
+---
+
+
+
+
+
+
+## Hi, I'm Eirini 👋
+
+### 👩‍🎓 PhD at Max Planck Institute for Psycholinguistics
+- worked with lots of tabular data with observations from experiments with human participants
+- got interested in open science and reproducibility
+
+--
+
+###💼 Trainer on Research Data Management (RDM) at TU Delft and 4TU.ResearchData
+- train researchers and data supporters on good RDM practice
+
+---
+
+## Session outline
+- FAIR data &amp; reproducible workflows
+- Data organisation in spreadsheets
+  - Good data entry practices
+  - Formatting data tables in spreadsheets
+  - Importing and exporting data from spreadsheets
+
+---
+class: center, middle, inverse
+
+## FAIR data &amp; reproducible workflows
+
+---
+
+## FAIR data
+
+---
+
+## Findable
+
+---
+
+## Accessible
+
+---
+
+## Interoperable
+
+---
+
+## Reusable
+
+---
+
+## Reproducibility
+
+---
+class: center, middle, inverse
+
+## Data organisation in spreadsheets
+
+---
+
+## Software needed
+
+.pull-left[
+Microsoft Excel
+
+&lt;img src="images/microsoft-excel.png" width="60%" height="60%" /&gt;
+]
+
+.pull-right[
+Libre Office
+
+![](images/libre-office.png)&lt;!-- --&gt;
+
+]
+---
+
+## Spreadsheets
+
+.pull-left[
+
+### Pros 👍🏼 
+
+- Easy to use
+- Good for data entry
+- Can be handy for producing "quick and dirty" summary statistics and figures
+]
+
+.pull-right[
+### Cons 👎🏼
+
+- ⚠️ A lot of manual work
+  - Easy to make mistakes (accidental deletions, formula misapplications, copy pasting errors)
+  - Not reproducible (including errors)
+- Non machine-readable formatting
+- Data importing issues (dates, special characters)
+]
+
+---
+
+## Manual work
+
+---
+
+## Non machine-readable formatting
+
+Software can't process information that:
+- relies on context
+- notes in the margin
+- spatial layout of data
+- field formatting
+
+to convey information
+
+---
+
+## Data importing issues
+
+Scientists rename human genes to stop Microsoft Excel from misreading them as dates
+
+---
+
+## A better way is possible!
+
+Data is stored in cells, coluumnsm and rows
+
+- Each box is a cell
+- Each column is a specific data feature
+- Each row is an individual observation
+
+---
+
+## Create spreadsheets that are less error-prone, easier for computers to process, and easier to share
+
+- Be consistent
+- Write dates like YYYYMMDD (consider splitting into YYYY-MM-DD)
+- Do not leave empty values (use code for missingness common in the programming language you will use; for Python: `None` or `NaN` - see [this chapter for more information on missingness in pandas](https://jakevdp.github.io/PythonDataScienceHandbook/03.04-missing-values.html))
+- Put as little information as possible in a single cell and one observation per row
+- Create a data dictionary that describes the spreadsheet and any cleaning steps you took
+- Leave the raw data alone!
+- Do not use formatting (colours, font, bolding)
+- Use data validation to avoid errors (Frictionless Data framework)
+
+---
+
+## Tidy data (R)
+
+In tidy data:
+- each variable forms a column
+- each observation forms a row
+- each cell is a single measurement
+
+---
+
+## Dataset for the workshop
+
+The Portal Project Teaching Database
+
+- Continuous data collection since 1977
+- Site: part of the Chihuahuan Desert in the USA. 20 hectares split in 24 experimental plots
+- Species: rodents
+- a simplified version of the Portal Project Data (https://doi.org/10.5281/zenodo.6374066)
+- variables:
+
+---
+
+## Exercise
+
+🕟 **10 mins**
+
+- Download the messy data
+- Open up the data in a spreadsheet programme
+- Notice that there are two tabs. Two field assistants coducted the surveys, one in 2013 and one in 2014, and they both kept track of the data in their own ways in the tabs 2013 and 2014 of the dataset, respectively. Now you're the person in charge of this project and you want to be able to start analysing the data.
+- You have 7 minutes to clean up as much of the dataset as you can.
+- Once the 7 minutes are up:
+  - take a screenshot of your cleaned dataset
+  - add a comment describing what confused or annoyed you the most
+- Check the screenshots and comments of the other participants and give them a +1 if you like their solution/comment
+
+<div class="countdown" id="timer_6242e20b" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+## Exporting data in an open file format
+
+- Accessible: usable by multiple types of software that are freely available (e.g. note that Microsoft requires a paid licence)
+- Life expectancy: open file formats are more suitable for long-terms preservation because they don't rely ona single software programme
+- Publishing: data repositories, journals and funding agencies may have requirements for open file formats
+- Universal format: interoperable format that produces the same results when it is imported by various software programmes, including plain text editors
+- Tab/comma delimited: comma-separated value files (.csv) are plain text files where the columns are separated by commas
+
+---
+
+## Exporting from Excel to .csv
+
+1. From the top menu, select `File` and `Save as`
+2. In the `Format` field select `Comma separated values (.csv)` from the list
+3. Double check the file name and the location where you want to save the data and hit `Save`
+
+---
+
+## My data contains commas!
+
+Enclose the data fields with double quotes and double check that the file you are exporting can be read in correctly.
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

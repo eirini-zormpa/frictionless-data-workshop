@@ -1,0 +1,236 @@
+---
+title: "Reproducible RDM workflows for tabular data"
+author: "Eirini Zormpa"  
+date: '2022-04-28 *(Updated: `r Sys.Date()`)*'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
+library(here)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+# uses my fork of the xaringanthemer package to left-align code chunks by default
+#devtools::install_github("bbartholdy/xaringanthemer") 
+library(xaringanthemer)
+style_duo(
+  primary_color = "#1F4257",
+  secondary_color = "#F97B64",
+  text_bold_color = "#F97B64", 
+  code_inline_color = "#EDCA00"
+)
+```
+
+## Hi, I'm Eirini `r emo::ji("wave")`
+
+### `r emo::ji("woman_student")` PhD at Max Planck Institute for Psycholinguistics
+- worked with lots of tabular data with observations from experiments with human participants
+- got interested in open science and reproducibility
+
+--
+
+###`r emo::ji("briefcase")` Trainer on Research Data Management (RDM) at TU Delft and 4TU.ResearchData
+- train researchers and data supporters on good RDM practice
+
+---
+
+## Session outline
+- FAIR data & reproducible workflows
+- Data organisation in spreadsheets
+  - Good data entry practices
+  - Formatting data tables in spreadsheets
+  - Importing and exporting data from spreadsheets
+
+---
+class: center, middle, inverse
+
+## FAIR data & reproducible workflows
+
+---
+
+## FAIR data
+
+---
+
+## Findable
+
+---
+
+## Accessible
+
+---
+
+## Interoperable
+
+---
+
+## Reusable
+
+---
+
+## Reproducibility
+
+---
+class: center, middle, inverse
+
+## Data organisation in spreadsheets
+
+---
+
+## Software needed
+
+.pull-left[
+Microsoft Excel
+
+```{r microsoft-excel, echo = FALSE, out.height="60%", out.width ="60%"}
+include_graphics("images/microsoft-excel.png")
+```
+]
+
+.pull-right[
+Libre Office
+
+```{r libre-office, echo = FALSE}
+include_graphics("images/libre-office.png")
+```
+
+]
+---
+
+## Spreadsheets
+
+.pull-left[
+
+### Pros `r emo::ji("thumbs_up_medium_light_skin_tone")` 
+
+- Easy to use
+- Good for data entry
+- Can be handy for producing "quick and dirty" summary statistics and figures
+]
+
+.pull-right[
+### Cons `r emo::ji("thumbs_down_medium_light_skin_tone")`
+
+- `r emo::ji("warning")` A lot of manual work
+  - Easy to make mistakes (accidental deletions, formula misapplications, copy pasting errors)
+  - Not reproducible (including errors)
+- Non machine-readable formatting
+- Data importing issues (dates, special characters)
+]
+
+---
+
+## Manual work
+
+---
+
+## Non machine-readable formatting
+
+Software can't process information that:
+- relies on context
+- notes in the margin
+- spatial layout of data
+- field formatting
+
+to convey information
+
+---
+
+## Data importing issues
+
+Scientists rename human genes to stop Microsoft Excel from misreading them as dates
+
+---
+
+## A better way is possible!
+
+Data is stored in cells, coluumnsm and rows
+
+- Each box is a cell
+- Each column is a specific data feature
+- Each row is an individual observation
+
+---
+
+## Create spreadsheets that are less error-prone, easier for computers to process, and easier to share
+
+- Be consistent
+- Write dates like YYYYMMDD (consider splitting into YYYY-MM-DD)
+- Do not leave empty values (use code for missingness common in the programming language you will use; for Python: `None` or `NaN` - see [this chapter for more information on missingness in pandas](https://jakevdp.github.io/PythonDataScienceHandbook/03.04-missing-values.html))
+- Put as little information as possible in a single cell and one observation per row
+- Create a data dictionary that describes the spreadsheet and any cleaning steps you took
+- Leave the raw data alone!
+- Do not use formatting (colours, font, bolding)
+- Use data validation to avoid errors (Frictionless Data framework)
+
+---
+
+## Tidy data (R)
+
+In tidy data:
+- each variable forms a column
+- each observation forms a row
+- each cell is a single measurement
+
+---
+
+## Dataset for the workshop
+
+The Portal Project Teaching Database
+
+- Continuous data collection since 1977
+- Site: part of the Chihuahuan Desert in the USA. 20 hectares split in 24 experimental plots
+- Species: rodents
+- a simplified version of the Portal Project Data (https://doi.org/10.5281/zenodo.6374066)
+- variables:
+
+---
+
+## Exercise
+
+`r emo::ji("clock")` **10 mins**
+
+- Download the messy data
+- Open up the data in a spreadsheet programme
+- Notice that there are two tabs. Two field assistants coducted the surveys, one in 2013 and one in 2014, and they both kept track of the data in their own ways in the tabs 2013 and 2014 of the dataset, respectively. Now you're the person in charge of this project and you want to be able to start analysing the data.
+- You have 7 minutes to clean up as much of the dataset as you can.
+- Once the 7 minutes are up:
+  - take a screenshot of your cleaned dataset
+  - add a comment describing what confused or annoyed you the most
+- Check the screenshots and comments of the other participants and give them a +1 if you like their solution/comment
+
+`r countdown::countdown(minutes = 7, color_running_background  = "lightgreen", color_running_text = "black", color_finished_background = "red", color_finished_text =  "grey30")`
+
+---
+
+## Exporting data in an open file format
+
+- Accessible: usable by multiple types of software that are freely available (e.g. note that Microsoft requires a paid licence)
+- Life expectancy: open file formats are more suitable for long-terms preservation because they don't rely ona single software programme
+- Publishing: data repositories, journals and funding agencies may have requirements for open file formats
+- Universal format: interoperable format that produces the same results when it is imported by various software programmes, including plain text editors
+- Tab/comma delimited: comma-separated value files (.csv) are plain text files where the columns are separated by commas
+
+---
+
+## Exporting from Excel to .csv
+
+1. From the top menu, select `File` and `Save as`
+2. In the `Format` field select `Comma separated values (.csv)` from the list
+3. Double check the file name and the location where you want to save the data and hit `Save`
+
+---
+
+## My data contains commas!
+
+Enclose the data fields with double quotes and double check that the file you are exporting can be read in correctly.
+
