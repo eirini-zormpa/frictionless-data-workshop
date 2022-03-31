@@ -15,8 +15,21 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(knitr)
+library(RefManageR)
+library(bibtex)
+
+BibOptions(check.entries = FALSE,
+           bib.style = "authoryear",
+           cite.style = "alphabetic",
+           style = "markdown",
+           hyperlink = FALSE,
+           dashed = FALSE)
+bib <- ReadBib("./bibliography.bib", check = FALSE)
+
 library(here)
+
 ```
+
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 # uses my fork of the xaringanthemer package to left-align code chunks by default
@@ -26,13 +39,17 @@ style_duo(
   primary_color = "#1F4257",
   secondary_color = "#F97B64",
   text_bold_color = "#F97B64", 
-  code_inline_color = "#EDCA00"
+  code_inline_color = "#F97B64",
+  text_font_size = "1.3rem",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Lato", "300", "700", "300i"),
+  code_font_google   = google_font("Fira Mono")
 )
 ```
 
 ## Hi, I'm Eirini `r emo::ji("wave")`
 
-### `r emo::ji("woman_student")` PhD at Max Planck Institute for Psycholinguistics
+### `r emo::ji("woman_student")` PhD Candidate at Max Planck Institute for Psycholinguistics
 - worked with lots of tabular data with observations from experiments with human participants
 - got interested in open science and reproducibility
 
@@ -44,7 +61,7 @@ style_duo(
 ---
 
 ## Session outline
-- FAIR data & reproducible workflows
+- Reproducibility & FAIR data
 - Data organisation in spreadsheets
   - Good data entry practices
   - Formatting data tables in spreadsheets
@@ -53,11 +70,139 @@ style_duo(
 ---
 class: center, middle, inverse
 
-## FAIR data & reproducible workflows
+## Reproducibility & FAIR data
 
 ---
 
-## FAIR data
+## What is reproducibility?
+
+```{r reproducible-matrix, echo = FALSE}
+include_graphics("images/reproducible-matrix.jpg")
+```
+
+<!-- TODO: figure out how to get the parenthetical citation working-->
+
+*Image from [The Turing Way: A Handbook for Reproducible Data Science](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions) `r NoCite(bib, "the_turing_way_community_2021")` (The Turing Way Community, 2021)*
+
+---
+
+## Why is reproducibility important?
+
+From an altruistic point of view, reproducibility is beneficial for the research community, and arguably society. 
+--
+In many cases, it is a minimum requirement for **verifying research**; when research can be verified, and by extension corrected, science is built on solid ground. 
+--
+Being able to reuse and build on available data and code saves time and resources, with the potential to speed up **innovation**. 
+
+--
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+But reproducibility can also be beneficial for individual researchers!
+
+---
+
+## Reproducibility: benefits for individual researchers
+
+<!-- TODO: figure out how to get the parenthetical citation working-->
+
+There aren't only altruistic reasons to work reproducibly; it can be good for your career too!
+
+Markowetz (2015) `r NoCite(bib, "markowetz_2015")` notes **five selfish** reasons to work reproducibly.
+
+
+
+---
+
+## Reason 1: reproducibility helps to avoid disaster
+
+--
+
+`r NoCite(bib, "nuijten_2016")`
+
+```{r selfish-disaster-1, echo = FALSE}
+include_graphics("images/nuijten-2016.png")
+```
+
+--
+
+- **1 in 2** examined papers had inconsistencies in the reported *p*-values
+- **1 in 8** examined papers had inconsistencies large enough that they would affect the conclusions
+
+---
+
+## Reason 1: reproducibility helps to avoid disaster (cont'd)
+
+--
+
+`r NoCite(bib, "ziemann_2016")`
+
+```{r selfish-disaster-2, echo = FALSE}
+include_graphics("images/ziemann-2016.png")
+```
+
+--
+
+- **1 in 5** papers in genetics is thought to have an error because of the default settings in Microsoft Excel reading in gene names as dates
+- *To be continued...*
+
+---
+
+## Reason 2: reproducibility makes it easier to write papers
+
+- with literate programming it's easy to combine text and code
+  - meaning you can call your results into your document directly. No more copy-pasting = **no more-copy pasting errors** `r emo::ji("sparkles")`
+  - if you collect more data or change your data cleaning, you just need to rerun the analyses and all results will update
+- working reproducibly often involves automation and/or good documentation, making it more likely **you'll actually know what you did** when it's time to write up `r emo::ji("woman_dancing_medium_light_skin_tone")`
+
+---
+
+## Reason 3: reproducibility helps reviewers see it your way
+
+Sharing the underlying code and data makes it possible for the reviewers to:
+- understand exactly how you cleaned and analysed the data
+- try out different analyses themselves
+- spot mistakes in your code`r emo::ji("eyes")`
+
+---
+
+## Reason 4: reproducibility enables continuity of your work
+
+Good documentation of the data and code means:
+- you'll be able to go to a project after a break (e.g., holidays, peer review)
+- it's easier for others to pick up a project (important in long-term projects)
+
+---
+
+## Reason 5: reproducibility helps to build your reputation
+
+Sharing and documenting your data and code well:
+- helps you build a reputation as an honest and careful researcher
+- if there is ever a problem with one of your papers you can show you did everything in good faith
+
+---
+
+## Conclusion
+
+Working reproducibly doesn't mean that there will definitely not be any mistakes in your work.
+But it does make it easier to figure out what went wrong and, by extension, to fix it.
+
+--
+
+Working reproducibly can also make the paper writing and reviewing process easier and more productive.
+
+--
+
+And it can help others build on your work and build your reputation.
+
+---
+
+## FAIR and open data and code
 
 ---
 
@@ -74,10 +219,6 @@ class: center, middle, inverse
 ---
 
 ## Reusable
-
----
-
-## Reproducibility
 
 ---
 class: center, middle, inverse
@@ -102,8 +243,8 @@ Libre Office
 ```{r libre-office, echo = FALSE}
 include_graphics("images/libre-office.png")
 ```
-
 ]
+
 ---
 
 ## Spreadsheets
@@ -234,3 +375,10 @@ The Portal Project Teaching Database
 
 Enclose the data fields with double quotes and double check that the file you are exporting can be read in correctly.
 
+---
+
+## References
+
+```{r, results='asis', echo=FALSE}
+PrintBibliography(bib)
+```
