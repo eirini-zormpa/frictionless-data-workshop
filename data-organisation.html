@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 
 # Reproducible RDM workflows for tabular data
 ### Eirini Zormpa
-### 2022-04-28 <em>(Updated: 2022-03-31)</em>
+### 28 April 2022 <em>(Updated: 2022-04-01)</em>
 
 ---
 
@@ -25,20 +25,20 @@ class: center, middle, inverse, title-slide
 
 
 
-## Hi, I'm Eirini 👋
+# Hi, I'm Eirini 👋
 
-### 👩‍🎓 PhD Candidate at Max Planck Institute for Psycholinguistics
+### 👩‍🎓 PhD Candidate @Max Planck Institute for Psycholinguistics
 - worked with lots of tabular data with observations from experiments with human participants
 - got interested in open science and reproducibility
 
 --
 
-###💼 Trainer on Research Data Management (RDM) at TU Delft and 4TU.ResearchData
-- train researchers and data supporters on good RDM practice
+###💼 Trainer on Research Data Management @TU Delft and 4TU.ResearchData
+- train researchers and data supporters on good research data management practice
 
 ---
 
-## Session outline
+# Session outline
 - Reproducibility &amp; FAIR data
 - Data organisation in spreadsheets
   - Good data entry practices
@@ -48,21 +48,21 @@ class: center, middle, inverse, title-slide
 ---
 class: center, middle, inverse
 
-## Reproducibility &amp; FAIR data
+# Reproducibility &amp; FAIR data
 
 ---
 
-## What is reproducibility?
+# What is reproducibility?
 
 ![](images/reproducible-matrix.jpg)&lt;!-- --&gt;
 
 &lt;!-- TODO: figure out how to get the parenthetical citation working--&gt;
 
-*Image from [The Turing Way: A Handbook for Reproducible Data Science](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions)  (The Turing Way Community, 2021)*
+.footnote[Image from [The Turing Way: A Handbook for Reproducible Data Science](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions)  (The Turing Way Community, 2021)]
 
 ---
 
-## Why is reproducibility important?
+# Why is reproducibility important?
 
 From an altruistic point of view, reproducibility is beneficial for the research community, and arguably society. 
 --
@@ -75,15 +75,12 @@ Being able to reuse and build on available data and code saves time and resource
 &lt;br&gt;
 &lt;br&gt;
 &lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
 
-But reproducibility can also be beneficial for individual researchers!
+But reproducibility can also be beneficial for **individual researchers**!
 
 ---
 
-## Reproducibility: benefits for individual researchers
+# Reproducibility: benefits for individual researchers
 
 &lt;!-- TODO: figure out how to get the parenthetical citation working--&gt;
 
@@ -95,7 +92,7 @@ Markowetz (2015)  notes **five selfish** reasons to work reproducibly.
 
 ---
 
-## Reason 1: reproducibility helps to avoid disaster
+# Reason 1: reproducibility helps to avoid disaster
 
 --
 
@@ -106,11 +103,14 @@ Markowetz (2015)  notes **five selfish** reasons to work reproducibly.
 --
 
 - **1 in 2** examined papers had inconsistencies in the reported *p*-values
+
+--
+
 - **1 in 8** examined papers had inconsistencies large enough that they would affect the conclusions
 
 ---
 
-## Reason 1: reproducibility helps to avoid disaster (cont'd)
+# Reason 1: reproducibility helps to avoid disaster (cont'd)
 
 --
 
@@ -121,45 +121,78 @@ Markowetz (2015)  notes **five selfish** reasons to work reproducibly.
 --
 
 - **1 in 5** papers in genetics is thought to have an error because of the default settings in Microsoft Excel reading in gene names as dates
+
+--
+
 - *To be continued...*
 
 ---
 
-## Reason 2: reproducibility makes it easier to write papers
+# Reason 2: reproducibility makes it easier to write papers
 
 - with literate programming it's easy to combine text and code
+
+--
+
   - meaning you can call your results into your document directly. No more copy-pasting = **no more-copy pasting errors** ✨
+  
+--
+
   - if you collect more data or change your data cleaning, you just need to rerun the analyses and all results will update
+  
+--
+
 - working reproducibly often involves automation and/or good documentation, making it more likely **you'll actually know what you did** when it's time to write up 💃🏼
 
 ---
 
-## Reason 3: reproducibility helps reviewers see it your way
+# Reason 3: reproducibility helps reviewers see it your way
 
 Sharing the underlying code and data makes it possible for the reviewers to:
+
+--
+
 - understand exactly how you cleaned and analysed the data
+
+--
+
 - try out different analyses themselves
+
+--
+
 - spot mistakes in your code👀
 
 ---
 
-## Reason 4: reproducibility enables continuity of your work
+# Reason 4: reproducibility enables continuity of your work
 
 Good documentation of the data and code means:
+
+--
+
 - you'll be able to go to a project after a break (e.g., holidays, peer review)
+
+--
+
 - it's easier for others to pick up a project (important in long-term projects)
 
 ---
 
-## Reason 5: reproducibility helps to build your reputation
+# Reason 5: reproducibility helps to build your reputation
 
 Sharing and documenting your data and code well:
+
+--
+
 - helps you build a reputation as an honest and careful researcher
+
+--
+
 - if there is ever a problem with one of your papers you can show you did everything in good faith
 
 ---
 
-## Conclusion
+# Conclusion
 
 Working reproducibly doesn't mean that there will definitely not be any mistakes in your work.
 But it does make it easier to figure out what went wrong and, by extension, to fix it.
@@ -174,32 +207,282 @@ And it can help others build on your work and build your reputation.
 
 ---
 
-## FAIR and open data and code
+# FAIR and open data and code
+
+Looking at this matrix again, it becomes obvious that for reproducibility to be possible, it is necessary to be able to get a **copy of the data and code**.
+
+--
+
+&lt;!-- TODO: figure out how to get the parenthetical citation working--&gt;
+
+Additionally, code and data need to be **Findable**, **Accessible**, **Interoperable**, and **Reusable**, or in short FAIR (Wilkinson *et al.*, 2016).
+
+&lt;img src="images/reproducible-matrix.jpg" width="75%" height="75%" /&gt;
 
 ---
 
-## Findable
+# Findable 🔍
+
+First people need to be able to find the data!
+
+--
+
+For data to be findable, they need to be described with **rich metadata**, or information about data.
+These metadata can be generic (e.g. author name, keywords) or discipline specific.
+
+--
+
+Data also need to be assigned a **unique and persistent identifier**.
+A commonly used identifier is the Digital Object Identifier (DOI).
+Such identifiers make it easy to find data, but also to link them with other relevant information (e.g. a publication).
 
 ---
 
-## Accessible
+# Accessible 🔓
+
+After people have found the data they need to be able to access them!
+
+This could mean that the data are publicly available in a **data repository**, like 4TU.ResearchData.
+
+
+--
+
+### ⚠️ Personal data and other sensitive information
+
+If you're working with personal data, classified data, or other sensitive information, you may need to keep the data restricted and require authentication or authorisation before others can access the data.
+
+In those cases, **metadata should still be accessible**.
 
 ---
 
-## Interoperable
+# Interoperable ⚙️
+
+Data often need to be integrated with other data.
+
+This integration is easier when data make reference to other **relevant datasets**.
+
+It's also important to make data available in **open file formats**, that anyone can open.
+
+Using **controlled vocabularies** is also highly recommended, if these exist in your field.
 
 ---
 
-## Reusable
+# Reusable ♻️
+
+Let's say people were able to find, access, and open your data.
+Now for the last part!
+
+--
+
+To be able to reuse your work, people need to be able to *understand* it.
+This means you need to provide good **documentation**:
+
+--
+
+- at a minimum, you should provide a **README** file where you describe what the project is about, how the files are organised and how to reproduce the project
 
 ---
+
+# Example of a README file
+
+&lt;img src="images/readme.png" width="55%" height="55%" /&gt;
+
+---
+
+# Reusable ♻️
+
+Let's say people were able to find, access, and open your data.
+Now for the last part!
+
+To be able to reuse your work, people need to be able to *understand* it.
+This means you need to provide good **documentation**:
+
+- at a minimum, you should provide a **README** file where you describe what the project is about, how the files are organised and how to reproduce the project
+- when working with tabular data, you should also provide a **data dictionary** where you explain what the different variables mean, the measurement units, how missingness is encoded etc.
+
+---
+
+# Some data
+
+&lt;style type="text/css"&gt;
+/* I need a smaller font size */
+
+.small { font-size: 70% }
+
+&lt;/style&gt;
+
+.pull-left[
+
+.small[
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Date collected &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Species &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Weight &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-01-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-02-18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-02-19 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 232 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-04-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-05-06 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-05-18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 182 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-06-09 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-07-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 115 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-07-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+]
+
+--
+
+.pull-right[
+
+### It's quite hard to make sense of data without context...
+
+- what do the acronyms in `Species` stand for?
+
+--
+
+- what is the unit of measurement for `Weight`?
+
+]
+
+---
+
+# Example of a data dictionary
+
+- `Data collected`: the date the data were collected in YYYY-MM-DD format
+- `Species`: a code for the species of the animal detected See below for a table of what the codes stand for
+- `Sex`: the sex of the animal detected `M` for male and `F` for female
+- `Weight`: the weight of the animal detected measured in grams 
+
+Missing data is coded as `NA`.
+
+| species code | scientific name     | common name                |
+|--------------|:-------------------:|---------------------------:|
+| PF           |  Perognathus flavus | Silky pocket mouse         |
+| OT           |  Onychomys torridus | Southern grasshopper mouse |
+| NA           |  Neotoma albigula   | White-throated woodrat     |
+
+---
+
+# Reusable (cont'd) ♻️
+
+Another crucial component to reusability is **usage licences**.
+Just because something is shared online, doesn't mean anyone can use it.
+That's because the creator* of the work holds the copyright to it.
+
+.footnote[
+*In fact, it is often your university or institute that holds the copyright to the work you created while working there.
+]
+
+--
+
+So, you need to **tell people what they are allowed to do** with your data and code.
+You do this by providing a usage licence.
+
+--
+
+Note that usage licences are different for data and for code:
+- Commonly used licences for data, presenations, papers etc. are the [Creative Commons licences](https://creativecommons.org/about/cclicenses/)
+- For code, you can check [a list of OSI-approved licences](https://choosealicense.com/licenses/)
+
+---
+
+# Don't panic!
+
+&lt;img src="images/fair-principles.jpg" width="80%" height="80%" /&gt;
+
+&lt;!-- TODO: figure out how to get the parenthetical citation working--&gt;
+
+.footnote[This image was created by [Scriberia](https://www.scriberia.com/) for The Turing Way community and is used under a [CC-BY licence](https://creativecommons.org/licenses/by/4.0/). [DOI: 10.5281/zenodo.3332807](https://zenodo.org/record/5706310) ]
+
+---
+
 class: center, middle, inverse
 
-## Data organisation in spreadsheets
+# Data organisation in spreadsheets
 
 ---
 
-## Software needed
+# Software needed
 
 .pull-left[
 Microsoft Excel
@@ -215,7 +498,7 @@ Libre Office
 
 ---
 
-## Spreadsheets
+# Spreadsheets
 
 .pull-left[
 
@@ -238,11 +521,11 @@ Libre Office
 
 ---
 
-## Manual work
+# Manual work
 
 ---
 
-## Non machine-readable formatting
+# Non machine-readable formatting
 
 Software can't process information that:
 - relies on context
@@ -254,13 +537,13 @@ to convey information
 
 ---
 
-## Data importing issues
+# Data importing issues
 
 Scientists rename human genes to stop Microsoft Excel from misreading them as dates
 
 ---
 
-## A better way is possible!
+# A better way is possible!
 
 Data is stored in cells, coluumnsm and rows
 
@@ -270,7 +553,7 @@ Data is stored in cells, coluumnsm and rows
 
 ---
 
-## Create spreadsheets that are less error-prone, easier for computers to process, and easier to share
+# Create spreadsheets that are less error-prone, easier for computers to process, and easier to share
 
 - Be consistent
 - Write dates like YYYYMMDD (consider splitting into YYYY-MM-DD)
@@ -283,7 +566,7 @@ Data is stored in cells, coluumnsm and rows
 
 ---
 
-## Tidy data (R)
+# Tidy data (R)
 
 In tidy data:
 - each variable forms a column
@@ -292,7 +575,7 @@ In tidy data:
 
 ---
 
-## Dataset for the workshop
+# Dataset for the workshop
 
 The Portal Project Teaching Database
 
@@ -304,9 +587,9 @@ The Portal Project Teaching Database
 
 ---
 
-## Exercise
+# Exercise
 
-🕢 **10 mins**
+🕠 **10 mins**
 
 - Download the messy data
 - Open up the data in a spreadsheet programme
@@ -317,13 +600,13 @@ The Portal Project Teaching Database
   - add a comment describing what confused or annoyed you the most
 - Check the screenshots and comments of the other participants and give them a +1 if you like their solution/comment
 
-<div class="countdown" id="timer_62458232" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6246d71b" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
 
-## Exporting data in an open file format
+# Exporting data in an open file format
 
 - Accessible: usable by multiple types of software that are freely available (e.g. note that Microsoft requires a paid licence)
 - Life expectancy: open file formats are more suitable for long-terms preservation because they don't rely ona single software programme
@@ -333,7 +616,7 @@ The Portal Project Teaching Database
 
 ---
 
-## Exporting from Excel to .csv
+# Exporting from Excel to .csv
 
 1. From the top menu, select `File` and `Save as`
 2. In the `Format` field select `Comma separated values (.csv)` from the list
@@ -341,16 +624,16 @@ The Portal Project Teaching Database
 
 ---
 
-## My data contains commas!
+# My data contains commas!
 
 Enclose the data fields with double quotes and double check that the file you are exporting can be read in correctly.
 
 ---
 
-## References
+# References
 
 Markowetz, F. (2015). _Five selfish reasons to work reproducibly_. Vol.
-16. 1 , p. 274. DOI:
+16.1 , p. 274. DOI:
 [10.1186/s13059-015-0850-7](https://doi.org/10.1186%2Fs13059-015-0850-7).
 
 Nuijten, M. B., C. H. J. Hartgerink, M. A. L. M. van Assen, et al.
@@ -359,8 +642,21 @@ Nuijten, M. B., C. H. J. Hartgerink, M. A. L. M. van Assen, et al.
 [10.3758/s13428-015-0664-2](https://doi.org/10.3758%2Fs13428-015-0664-2).
 
 The Turing Way Community (2021). _The Turing Way: A handbook for
-reproducible, ethical and collaborative research_. Zenodo. DOI:
+reproducible, ethical and collaborative research_. Version 1.0.1. DOI:
 [10.5281/zenodo.5671094](https://doi.org/10.5281%2Fzenodo.5671094).
+
+The Turing Way Community and Scriberia (2021). _Illustrations from the
+Turing Way book dashes_. DOI:
+[10.5281/zenodo.5706310](https://doi.org/10.5281%2Fzenodo.5706310).
+
+---
+
+# References
+
+Wilkinson, M. D., M. Dumontier, I. J. Aalbersberg, et al. (2016). _The
+FAIR Guiding Principles for scientific data management and
+stewardship_. Vol. 3.1 , p. 160018. DOI:
+[10.1038/sdata.2016.18](https://doi.org/10.1038%2Fsdata.2016.18).
 
 Ziemann, M., Y. Eren, and A. El-Osta (2016). _Gene name errors are
 widespread in the scientific literature_. Vol. 17. 1 , p. 177. DOI:

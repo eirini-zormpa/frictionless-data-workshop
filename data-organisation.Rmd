@@ -1,7 +1,7 @@
 ---
 title: "Reproducible RDM workflows for tabular data"
 author: "Eirini Zormpa"  
-date: '2022-04-28 *(Updated: `r Sys.Date()`)*'
+date: "28 April 2022 *(Updated: `r Sys.Date()`)*"
 output:
   xaringan::moon_reader:
     css: xaringan-themer.css
@@ -27,7 +27,9 @@ BibOptions(check.entries = FALSE,
 bib <- ReadBib("./bibliography.bib", check = FALSE)
 
 library(here)
-
+library(readxl)
+library(magrittr)
+library(kableExtra)
 ```
 
 
@@ -41,26 +43,29 @@ style_duo(
   text_bold_color = "#F97B64", 
   code_inline_color = "#F97B64",
   text_font_size = "1.3rem",
+  footnote_font_size = "0.7em",
+  footnote_position_bottom = "25px",
+  table_row_even_background_color = "#1F4257",
   header_font_google = google_font("Josefin Sans"),
   text_font_google   = google_font("Lato", "300", "700", "300i"),
   code_font_google   = google_font("Fira Mono")
 )
 ```
 
-## Hi, I'm Eirini `r emo::ji("wave")`
+# Hi, I'm Eirini `r emo::ji("wave")`
 
-### `r emo::ji("woman_student")` PhD Candidate at Max Planck Institute for Psycholinguistics
+### `r emo::ji("woman_student")` PhD Candidate @Max Planck Institute for Psycholinguistics
 - worked with lots of tabular data with observations from experiments with human participants
 - got interested in open science and reproducibility
 
 --
 
-###`r emo::ji("briefcase")` Trainer on Research Data Management (RDM) at TU Delft and 4TU.ResearchData
-- train researchers and data supporters on good RDM practice
+###`r emo::ji("briefcase")` Trainer on Research Data Management @TU Delft and 4TU.ResearchData
+- train researchers and data supporters on good research data management practice
 
 ---
 
-## Session outline
+# Session outline
 - Reproducibility & FAIR data
 - Data organisation in spreadsheets
   - Good data entry practices
@@ -70,11 +75,11 @@ style_duo(
 ---
 class: center, middle, inverse
 
-## Reproducibility & FAIR data
+# Reproducibility & FAIR data
 
 ---
 
-## What is reproducibility?
+# What is reproducibility?
 
 ```{r reproducible-matrix, echo = FALSE}
 include_graphics("images/reproducible-matrix.jpg")
@@ -82,11 +87,11 @@ include_graphics("images/reproducible-matrix.jpg")
 
 <!-- TODO: figure out how to get the parenthetical citation working-->
 
-*Image from [The Turing Way: A Handbook for Reproducible Data Science](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions) `r NoCite(bib, "the_turing_way_community_2021")` (The Turing Way Community, 2021)*
+.footnote[Image from [The Turing Way: A Handbook for Reproducible Data Science](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions) `r NoCite(bib, "the_turing_way_community_2021")` (The Turing Way Community, 2021)]
 
 ---
 
-## Why is reproducibility important?
+# Why is reproducibility important?
 
 From an altruistic point of view, reproducibility is beneficial for the research community, and arguably society. 
 --
@@ -99,15 +104,12 @@ Being able to reuse and build on available data and code saves time and resource
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
 
-But reproducibility can also be beneficial for individual researchers!
+But reproducibility can also be beneficial for **individual researchers**!
 
 ---
 
-## Reproducibility: benefits for individual researchers
+# Reproducibility: benefits for individual researchers
 
 <!-- TODO: figure out how to get the parenthetical citation working-->
 
@@ -119,7 +121,7 @@ Markowetz (2015) `r NoCite(bib, "markowetz_2015")` notes **five selfish** reason
 
 ---
 
-## Reason 1: reproducibility helps to avoid disaster
+# Reason 1: reproducibility helps to avoid disaster
 
 --
 
@@ -132,11 +134,14 @@ include_graphics("images/nuijten-2016.png")
 --
 
 - **1 in 2** examined papers had inconsistencies in the reported *p*-values
+
+--
+
 - **1 in 8** examined papers had inconsistencies large enough that they would affect the conclusions
 
 ---
 
-## Reason 1: reproducibility helps to avoid disaster (cont'd)
+# Reason 1: reproducibility helps to avoid disaster (cont'd)
 
 --
 
@@ -149,45 +154,78 @@ include_graphics("images/ziemann-2016.png")
 --
 
 - **1 in 5** papers in genetics is thought to have an error because of the default settings in Microsoft Excel reading in gene names as dates
+
+--
+
 - *To be continued...*
 
 ---
 
-## Reason 2: reproducibility makes it easier to write papers
+# Reason 2: reproducibility makes it easier to write papers
 
 - with literate programming it's easy to combine text and code
+
+--
+
   - meaning you can call your results into your document directly. No more copy-pasting = **no more-copy pasting errors** `r emo::ji("sparkles")`
+  
+--
+
   - if you collect more data or change your data cleaning, you just need to rerun the analyses and all results will update
+  
+--
+
 - working reproducibly often involves automation and/or good documentation, making it more likely **you'll actually know what you did** when it's time to write up `r emo::ji("woman_dancing_medium_light_skin_tone")`
 
 ---
 
-## Reason 3: reproducibility helps reviewers see it your way
+# Reason 3: reproducibility helps reviewers see it your way
 
 Sharing the underlying code and data makes it possible for the reviewers to:
+
+--
+
 - understand exactly how you cleaned and analysed the data
+
+--
+
 - try out different analyses themselves
+
+--
+
 - spot mistakes in your code`r emo::ji("eyes")`
 
 ---
 
-## Reason 4: reproducibility enables continuity of your work
+# Reason 4: reproducibility enables continuity of your work
 
 Good documentation of the data and code means:
+
+--
+
 - you'll be able to go to a project after a break (e.g., holidays, peer review)
+
+--
+
 - it's easier for others to pick up a project (important in long-term projects)
 
 ---
 
-## Reason 5: reproducibility helps to build your reputation
+# Reason 5: reproducibility helps to build your reputation
 
 Sharing and documenting your data and code well:
+
+--
+
 - helps you build a reputation as an honest and careful researcher
+
+--
+
 - if there is ever a problem with one of your papers you can show you did everything in good faith
 
 ---
 
-## Conclusion
+# Conclusion
 
 Working reproducibly doesn't mean that there will definitely not be any mistakes in your work.
 But it does make it easier to figure out what went wrong and, by extension, to fix it.
@@ -202,32 +240,202 @@ And it can help others build on your work and build your reputation.
 
 ---
 
-## FAIR and open data and code
+# FAIR and open data and code
+
+Looking at this matrix again, it becomes obvious that for reproducibility to be possible, it is necessary to be able to get a **copy of the data and code**.
+
+--
+
+<!-- TODO: figure out how to get the parenthetical citation working-->
+
+Additionally, code and data need to be **Findable**, **Accessible**, **Interoperable**, and **Reusable**, or in short FAIR (`r NoCite(bib, "wilkinson_2016")`Wilkinson *et al.*, 2016).
+
+```{r reproducible-matrix-2, echo = FALSE, out.height="75%", out.width ="75%"}
+include_graphics("images/reproducible-matrix.jpg")
+```
 
 ---
 
-## Findable
+# Findable `r emo::ji("magnifying_glass_tilted_left")`
+
+First people need to be able to find the data!
+
+--
+
+For data to be findable, they need to be described with **rich metadata**, or information about data.
+These metadata can be generic (e.g. author name, keywords) or discipline specific.
+
+--
+
+Data also need to be assigned a **unique and persistent identifier**.
+A commonly used identifier is the Digital Object Identifier (DOI).
+Such identifiers make it easy to find data, but also to link them with other relevant information (e.g. a publication).
 
 ---
 
-## Accessible
+# Accessible `r emo::ji("unlocked")`
+
+After people have found the data they need to be able to access them!
+
+This could mean that the data are publicly available in a **data repository**, like 4TU.ResearchData.
+
+
+--
+
+### `r emo::ji("warning")` Personal data and other sensitive information
+
+If you're working with personal data, classified data, or other sensitive information, you may need to keep the data restricted and require authentication or authorisation before others can access the data.
+
+In those cases, **metadata should still be accessible**.
 
 ---
 
-## Interoperable
+# Interoperable `r emo::ji("gear")`
+
+Data often need to be integrated with other data.
+
+This integration is easier when data make reference to other **relevant datasets**.
+
+It's also important to make data available in **open file formats**, that anyone can open.
+
+Using **controlled vocabularies** is also highly recommended, if these exist in your field.
 
 ---
 
-## Reusable
+# Reusable `r emo::ji("recycle")`
+
+Let's say people were able to find, access, and open your data.
+Now for the last part!
+
+--
+
+To be able to reuse your work, people need to be able to *understand* it.
+This means you need to provide good **documentation**:
+
+--
+
+- at a minimum, you should provide a **README** file where you describe what the project is about, how the files are organised and how to reproduce the project
 
 ---
+
+# Example of a README file
+
+```{r readme-example, echo = FALSE, out.height="55%", out.width ="55%"}
+include_graphics("images/readme.png")
+```
+
+---
+
+# Reusable `r emo::ji("recycle")`
+
+Let's say people were able to find, access, and open your data.
+Now for the last part!
+
+To be able to reuse your work, people need to be able to *understand* it.
+This means you need to provide good **documentation**:
+
+- at a minimum, you should provide a **README** file where you describe what the project is about, how the files are organised and how to reproduce the project
+- when working with tabular data, you should also provide a **data dictionary** where you explain what the different variables mean, the measurement units, how missingness is encoded etc.
+
+---
+
+# Some data
+
+```{css, echo = FALSE}
+/* I need a smaller font size */
+
+.small { font-size: 70% }
+
+```
+
+.pull-left[
+
+.small[
+
+```{r read-data, echo = FALSE}
+messy_data <- read_excel(here("data", "survey_data_spreadsheet_messy.xls"), sheet = 3, skip = 1)
+messy_data %>% knitr::kable('html')
+```
+
+]
+
+]
+
+--
+
+.pull-right[
+
+### It's quite hard to make sense of data without context...
+
+- what do the acronyms in `Species` stand for?
+
+--
+
+- what is the unit of measurement for `Weight`?
+
+]
+
+---
+
+# Example of a data dictionary
+
+- `Data collected`: the date the data were collected in YYYY-MM-DD format
+- `Species`: a code for the species of the animal detected See below for a table of what the codes stand for
+- `Sex`: the sex of the animal detected `M` for male and `F` for female
+- `Weight`: the weight of the animal detected measured in grams 
+
+Missing data is coded as `NA`.
+
+| species code | scientific name     | common name                |
+|--------------|:-------------------:|---------------------------:|
+| PF           |  Perognathus flavus | Silky pocket mouse         |
+| OT           |  Onychomys torridus | Southern grasshopper mouse |
+| NA           |  Neotoma albigula   | White-throated woodrat     |
+
+---
+
+# Reusable (cont'd) `r emo::ji("recycle")`
+
+Another crucial component to reusability is **usage licences**.
+Just because something is shared online, doesn't mean anyone can use it.
+That's because the creator* of the work holds the copyright to it.
+
+.footnote[
+*In fact, it is often your university or institute that holds the copyright to the work you created while working there.
+]
+
+--
+
+So, you need to **tell people what they are allowed to do** with your data and code.
+You do this by providing a usage licence.
+
+--
+
+Note that usage licences are different for data and for code:
+- Commonly used licences for data, presenations, papers etc. are the [Creative Commons licences](https://creativecommons.org/about/cclicenses/)
+- For code, you can check [a list of OSI-approved licences](https://choosealicense.com/licenses/)
+
+---
+
+# Don't panic!
+
+```{r fair-principles, echo = FALSE, out.height="80%", out.width ="80%"}
+include_graphics("images/fair-principles.jpg")
+```
+
+<!-- TODO: figure out how to get the parenthetical citation working-->
+
+.footnote[This image was created by [Scriberia](https://www.scriberia.com/) for The Turing Way community and is used under a [CC-BY licence](https://creativecommons.org/licenses/by/4.0/). [DOI: 10.5281/zenodo.3332807](https://zenodo.org/record/5706310) `r NoCite(bib, "the_turing_way_community_2021_5706310")`]
+
+---
+
 class: center, middle, inverse
 
-## Data organisation in spreadsheets
+# Data organisation in spreadsheets
 
 ---
 
-## Software needed
+# Software needed
 
 .pull-left[
 Microsoft Excel
@@ -247,7 +455,7 @@ include_graphics("images/libre-office.png")
 
 ---
 
-## Spreadsheets
+# Spreadsheets
 
 .pull-left[
 
@@ -270,11 +478,11 @@ include_graphics("images/libre-office.png")
 
 ---
 
-## Manual work
+# Manual work
 
 ---
 
-## Non machine-readable formatting
+# Non machine-readable formatting
 
 Software can't process information that:
 - relies on context
@@ -286,13 +494,13 @@ to convey information
 
 ---
 
-## Data importing issues
+# Data importing issues
 
 Scientists rename human genes to stop Microsoft Excel from misreading them as dates
 
 ---
 
-## A better way is possible!
+# A better way is possible!
 
 Data is stored in cells, coluumnsm and rows
 
@@ -302,7 +510,7 @@ Data is stored in cells, coluumnsm and rows
 
 ---
 
-## Create spreadsheets that are less error-prone, easier for computers to process, and easier to share
+# Create spreadsheets that are less error-prone, easier for computers to process, and easier to share
 
 - Be consistent
 - Write dates like YYYYMMDD (consider splitting into YYYY-MM-DD)
@@ -315,7 +523,7 @@ Data is stored in cells, coluumnsm and rows
 
 ---
 
-## Tidy data (R)
+# Tidy data (R)
 
 In tidy data:
 - each variable forms a column
@@ -324,7 +532,7 @@ In tidy data:
 
 ---
 
-## Dataset for the workshop
+# Dataset for the workshop
 
 The Portal Project Teaching Database
 
@@ -336,7 +544,7 @@ The Portal Project Teaching Database
 
 ---
 
-## Exercise
+# Exercise
 
 `r emo::ji("clock")` **10 mins**
 
@@ -353,7 +561,7 @@ The Portal Project Teaching Database
 
 ---
 
-## Exporting data in an open file format
+# Exporting data in an open file format
 
 - Accessible: usable by multiple types of software that are freely available (e.g. note that Microsoft requires a paid licence)
 - Life expectancy: open file formats are more suitable for long-terms preservation because they don't rely ona single software programme
@@ -363,7 +571,7 @@ The Portal Project Teaching Database
 
 ---
 
-## Exporting from Excel to .csv
+# Exporting from Excel to .csv
 
 1. From the top menu, select `File` and `Save as`
 2. In the `Format` field select `Comma separated values (.csv)` from the list
@@ -371,14 +579,22 @@ The Portal Project Teaching Database
 
 ---
 
-## My data contains commas!
+# My data contains commas!
 
 Enclose the data fields with double quotes and double check that the file you are exporting can be read in correctly.
 
 ---
 
-## References
+# References
 
-```{r, results='asis', echo=FALSE}
-PrintBibliography(bib)
+```{r references-1, results='asis', echo=FALSE}
+PrintBibliography(bib, start = 1, end = 4)
+```
+
+---
+
+# References
+
+```{r references-2, results='asis', echo=FALSE}
+PrintBibliography(bib, start = 5, end = 6)
 ```
