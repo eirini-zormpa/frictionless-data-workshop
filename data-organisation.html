@@ -8,6 +8,7 @@
     <link href="data-organisation_files/countdown-0.3.5/countdown.css" rel="stylesheet" />
     <script src="data-organisation_files/countdown-0.3.5/countdown.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="cols.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -15,7 +16,7 @@ class: center, middle, inverse, title-slide
 
 # Reproducible RDM workflows for tabular data
 ### Eirini Zormpa
-### 28 April 2022 <em>(Updated: 2022-04-01)</em>
+### 28 April 2022 <em>(Updated: 2022-04-13)</em>
 
 ---
 
@@ -39,16 +40,20 @@ class: center, middle, inverse, title-slide
 ---
 
 # Session outline
-- Reproducibility &amp; FAIR data
-- Data organisation in spreadsheets
+- Reproducibility &amp; the FAIR principles
+  - What is reproducibility and why is it important?
+  - What are the FAIR principles?
+- Data Carpentry: Data organisation for tabular data*
   - Good data entry practices
   - Formatting data tables in spreadsheets
-  - Importing and exporting data from spreadsheets
+  - Importing and exporting data
+
+.footnote[The content presented in this part comes from the Data Carpentry lesson *[Data Organization in Spreadsheets for Ecologists](https://datacarpentry.org/spreadsheet-ecology-lesson/)* and is used under a [CC-BY licence](https://creativecommons.org/licenses/by/4.0/).]
 
 ---
 class: center, middle, inverse
 
-# Reproducibility &amp; FAIR data
+# Reproducibility &amp; the FAIR principles
 
 ---
 
@@ -184,7 +189,8 @@ Sharing and documenting your data and code well:
 
 --
 
-- helps you build a reputation as an honest and careful researcher
+- helps you build a reputation as an honest and careful researcher.
+This could be contributing to a **citation advantage** of about 25% for publications with linked data (Colavizza *et al.*, 2020). 
 
 --
 
@@ -192,7 +198,7 @@ Sharing and documenting your data and code well:
 
 ---
 
-# Conclusion
+# Interim summary 1
 
 Working reproducibly doesn't mean that there will definitely not be any mistakes in your work.
 But it does make it easier to figure out what went wrong and, by extension, to fix it.
@@ -211,8 +217,6 @@ And it can help others build on your work and build your reputation.
 
 Looking at this matrix again, it becomes obvious that for reproducibility to be possible, it is necessary to be able to get a **copy of the data and code**.
 
---
-
 &lt;!-- TODO: figure out how to get the parenthetical citation working--&gt;
 
 Additionally, code and data need to be **Findable**, **Accessible**, **Interoperable**, and **Reusable**, or in short FAIR (Wilkinson *et al.*, 2016).
@@ -228,7 +232,7 @@ First people need to be able to find the data!
 --
 
 For data to be findable, they need to be described with **rich metadata**, or information about data.
-These metadata can be generic (e.g. author name, keywords) or discipline specific.
+These metadata can be generic (e.g. title, author name, keywords) or discipline specific.
 
 --
 
@@ -251,6 +255,8 @@ This could mean that the data are publicly available in a **data repository**, l
 
 If you're working with personal data, classified data, or other sensitive information, you may need to keep the data restricted and require authentication or authorisation before others can access the data.
 
+--
+
 In those cases, **metadata should still be accessible**.
 
 ---
@@ -261,9 +267,87 @@ Data often need to be integrated with other data.
 
 This integration is easier when data make reference to other **relevant datasets**.
 
+--
+
 It's also important to make data available in **open file formats**, that anyone can open.
 
+--
+
 Using **controlled vocabularies** is also highly recommended, if these exist in your field.
+
+---
+
+# In how many different ways can you sat "female"?*
+
+![:col_row 
+
+18-day pregnant females &lt;br&gt;
+female (lactating) &lt;br&gt;
+individual female &lt;br&gt;
+worker caste (female) &lt;br&gt;
+2 yr old female &lt;br&gt;
+female (pregnant) &lt;br&gt;
+sex: female &lt;br&gt;
+400 yr. old female &lt;br&gt;
+female (outbred) &lt;br&gt;
+mare &lt;br&gt;
+female (other) &lt;br&gt;
+adult female &lt;br&gt;
+female parent &lt;br&gt;
+female (worker) &lt;br&gt;
+female plant,
+&lt;b&gt;femal&lt;/b&gt; &lt;br&gt;
+castrate female &lt;br&gt;
+female with eggs &lt;br&gt;
+ovigerous female &lt;br&gt;
+3 female &lt;br&gt;
+cf.female &lt;br&gt;
+female worker &lt;br&gt;
+oviparous sexual females &lt;br&gt;
+female (phenotype) &lt;br&gt;
+cystocarpic female &lt;br&gt;
+gynoecious &lt;br&gt;
+thelytoky &lt;br&gt;
+dikaryon &lt;br&gt;
+female virgin &lt;br&gt;
+dioecious female,
+femlale &lt;br&gt;
+female (gynoecious) &lt;br&gt;
+&lt;b&gt;remale&lt;/b&gt; &lt;br&gt;
+metafemale &lt;br&gt;
+f &lt;br&gt;
+&lt;b&gt;femele&lt;/b&gt; &lt;br&gt;
+sterile female &lt;br&gt;
+famale &lt;br&gt;
+normal female &lt;br&gt;
+&lt;b&gt;femail&lt;/b&gt; &lt;br&gt;
+sf &lt;br&gt;
+female &lt;br&gt;
+females &lt;br&gt;
+tetraploid female &lt;br&gt;
+strictly female,
+females only &lt;br&gt;
+worker &lt;br&gt;
+hexaploid female &lt;br&gt;
+healthy female &lt;br&gt;
+female (gynoecious) &lt;br&gt;
+probably female &lt;br&gt;
+female (note: this sample was originally provided as a "male" sample and labeled this way in the paper and original submission; however analyses carried out in the meantime clearly show that this sample stems from a female individual)
+
+]
+
+.footnote[Adapted from Silvester *et al.*, 2015. ]
+
+---
+
+# Dates
+
+To avoid ambiguity, use the [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) standard: **YYYYMMDD** (or YYYY-MM-DD).
+
+&lt;img src="images/date-formats.png" width="90%" height="90%" /&gt;
+
+.footnote[This [image](https://en.m.wikipedia.org/wiki/File:Date_format_by_country_revised.svg) was created by cmglee, Canuckguy and many others for [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) and is used under a [CC-BY-SA licence](https://creativecommons.org/licenses/by-sa/4.0/)]
+
 
 ---
 
@@ -285,7 +369,31 @@ This means you need to provide good **documentation**:
 
 # Example of a README file
 
-&lt;img src="images/readme.png" width="55%" height="55%" /&gt;
+.small[
+
+**The Portal Project Teaching Database**
+
+*Authors*: Morgan Ernest, James Brown, Thomas Valone, Ethan P. White
+
+**General introduction**
+
+The Portal Project Teaching Database is a simplified version of the [Portal Project Database](https://doi.org/10.5281/zenodo.6374066) designed for teaching. It provides a real world example of life-history, population, and ecological data, with sufficient complexity to teach many aspects of data analysis and management.
+
+- Time coverage: Continuous data collection since 1977
+- Site: 20 hectares split in 24 experimental plots in the Chihuahuan Desert (USA) 
+- Species: rodents
+
+**Purpose**
+
+This database is not designed for research as it intentionally removes some of the real-world complexities. The original database is published at [Ecological Archives](http://esapubs.org/archive/ecol/E090/118/) and that version should be used for research purposes.
+
+**Organisation**
+
+The Python code used for converting the original database to this teach version is included as 'create_portal_teach_dataset.py'.
+
+]
+
+
 
 ---
 
@@ -417,9 +525,6 @@ This means you need to provide good **documentation**:
 ### It's quite hard to make sense of data without context...
 
 - what do the acronyms in `Species` stand for?
-
---
-
 - what is the unit of measurement for `Weight`?
 
 ]
@@ -476,131 +581,757 @@ Note that usage licences are different for data and for code:
 
 ---
 
+# Interim summary 2
+
+Making your data and code Findable, Accessible, Interoperable and Reusable can take you a long way towards making your work reproducible.
+
+--
+
+There are many things you need to do to make your work FAIR, but:
+1. these things will benefit you
+2. you don't have to start doing **everything** immediately
+3. we're here to help 🤝 ✨ In this workshop you'll learn good practices for working with tabular data, how to generate and add metadata to your data, how to validate your data, and how to publish your data in a data repository.
+
+--
+
+So let's get started 🎉
+
+---
+
 class: center, middle, inverse
 
-# Data organisation in spreadsheets
+# Data Carpentry: Data organisation for tabular data
 
 ---
 
-# Software needed
-
-.pull-left[
-Microsoft Excel
-
-&lt;img src="images/microsoft-excel.png" width="60%" height="60%" /&gt;
-]
-
-.pull-right[
-Libre Office
-
-![](images/libre-office.png)&lt;!-- --&gt;
-]
-
----
-
-# Spreadsheets
+# Tabular data
 
 .pull-left[
 
-### Pros 👍🏼 
+Most researchers work with **tabular data** for their research, so knowing how to organise this type of data well is fundamental.
 
-- Easy to use
-- Good for data entry
-- Can be handy for producing "quick and dirty" summary statistics and figures
+&lt;br&gt;
+
+Tabular data refers to "rectangular tables made up of *rows* and *columns*" (Wickham, 2014).
+
 ]
 
-.pull-right[
-### Cons 👎🏼
+--
 
-- ⚠️ A lot of manual work
-  - Easy to make mistakes (accidental deletions, formula misapplications, copy pasting errors)
-  - Not reproducible (including errors)
-- Non machine-readable formatting
-- Data importing issues (dates, special characters)
+.pull-right[
+
+.small[
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Date collected &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Species &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Weight &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-01-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-02-18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-02-19 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 232 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-04-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-05-06 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-05-18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 182 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-06-09 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-07-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 115 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-07-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
 ]
 
 ---
 
-# Manual work
+# Tidy data
+
+A good framework for working with tabular data is that of **tidy data**. The concept of tidy data is borrowed from `R` and the `tidyverse` packages within it (Wickham, 2014).
+
+&lt;img src="images/tidy-data-1.jpg" width="85%" height="85%" /&gt;
+
+.footnote[llustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst. ]
+
+---
+
+# Tidy data
+
+&lt;img src="images/tidy-data-2.jpg" width="100%" height="100%" /&gt;
+
+.footnote[llustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst. ]
+
+---
+
+# Why tidy data?
+
+Using a consistent way to organise your data, e.g. following the tidy data structure, helps you be more **efficient** when working with your data.
+That's because you can create (and reuse) tools that expect that kind of structure instead of starting from scratch every time.
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+--
+
+Like `R`, `NumPy` and `pandas` can use vectorised processes that make working with large datasets more efficient.
+Placing variables in columns makes using vectorised processes easier.
+
+
+---
+
+# Example 1
+
+.small[
+
+.pull-left[
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Date collected &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Species &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Weight &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-01-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-02-18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-02-19 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 232 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-04-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-05-06 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-05-18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 182 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-06-09 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-07-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 115 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-07-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+]
+
+--
+
+**Summary (long)**
+
+.small[
+
+.pull-right[
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Species &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Mean weight &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 148.50 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 211.00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24.67 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.50 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+
+]
+
+--
+
+**Summary (wide)**
+
+.small[
+
+.pull-right[
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; NA &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; OT &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PF &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 148.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24.67 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 211.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.5 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+]
+
+---
+
+# Example 2
+
+.small[
+
+.pull-left[
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Date collected &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Species &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Weight &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-01-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-02-18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-02-19 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 232 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-03-11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-04-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-05-06 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-05-18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 182 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-06-09 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-07-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 115 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2015-07-08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+]
+
+--
+
+.small[
+
+.pull-left[
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Year &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Month &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Day &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Species &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Weight &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 232 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 182 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 115 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+]
+
+---
+
+# ⚠️ Keep your data tidy from the start
+
+How you collect your data will vary depending on your field and specific project:
+- If you can control how the data is created, make sure you use the tidy data structure **from the beginning**.
+- If you cannot control how the raw data is structured, wrangle it into the tidy format, ideally using a **scripted programming language**, like Python or R.
+
+---
+
+# Spreadsheet programmes (e.g. Microsoft Excel)
+
+Researchers often use spreadsheet programmes like Microsoft Excel to work with their tabular data.
+
+
+Although such programmes are good for some things, they aren't always appropriate...
+
+--
+
+&lt;img src="images/excel-covid.png" width="80%" height="80%" /&gt;
+
+For example, when **16000** COVID cases went unreported in England when the old .xls file format ran out of rows. 
+
+---
+
+# Problems with Excel
+
+### ⛔ Data wrangling, visualisation &amp; analysis
+
+--
+
+- easy to make mistakes (accidental deletions, misapplying formulas)
+
+--
+
+- not reproducible (including mistakes)
+
+--
+
+**Never edit your raw data in Excel!!!**
+
+--
+
+### ⚠️ Data entry
+
+--
+
+- data importing and exporting problems
+
+--
+
+- non machine-readable formatting
+
+---
+
+# Data importing and exporting problems
+
+We've known since **2016** that many genetics papers (**1 in 5**) have mistakes because Microsoft Excel interprets gene names as dates.
+
+--
+
+&lt;img src="images/vincent_2020.png" width="100%" height="100%" /&gt;
+
+
+
+--
+
+ Also, for any **language scientists** out there working with a language that's not English, always use **UTF-8 text encoding**.
 
 ---
 
 # Non machine-readable formatting
 
-Software can't process information that:
-- relies on context
+We often organise data the way we humans like to work, i.e. by relying on **context**.
+That doesn't work for software like Python or R that we use to analyse data.
+So we need to structure our data in a way computers can understand.
+
+--
+
+### Non machine-readable formatting includes:
+
+--
+
 - notes in the margin
+
+--
+
 - spatial layout of data
+
+--
+
 - field formatting
 
-to convey information
+--
+
+- using special characters
 
 ---
 
-# Data importing issues
+&lt;style type="text/css"&gt;
+/* I need a medium font size :) */
 
-Scientists rename human genes to stop Microsoft Excel from misreading them as dates
+.medium { font-size: 90% }
+
+&lt;/style&gt;
+
+# How to code missing values*
+
+.medium[
+
+| Null value | Problems               | Compatibility  | Recommendation |
+|------------|:----------------------:|---------------:|---------------:|
+| 0          | Looks like true 0      |                | Never use      |
+| blank      | Could be an oversight  | R, Python, SQL | Best option    |
+| 999, -999  | Not recognised as null |                | Avoid          |
+| NA, na     | Can be abbreviation    | R              | Good option    |
+| N/A        | Often incompatible     |                | Avoid          |
+| NULL       | Data type issues       | SQL            | Good option    |
+| None       | Data type issues       | Python         | Avoid          |
+| No data    | Data type issues       |                | Avoid          |
+| Missing    | Data type issues       |                | Avoid          |
+| -, +, .    | Data type issues       |                | Avoid          |
+
+]
+
+.footnote[Adapted slightly from White *et al.* (2013) ]
 
 ---
 
-# A better way is possible!
+# Summary: Tips for structuring tabular data
 
-Data is stored in cells, coluumnsm and rows
-
-- Each box is a cell
-- Each column is a specific data feature
-- Each row is an individual observation
-
----
-
-# Create spreadsheets that are less error-prone, easier for computers to process, and easier to share
-
-- Be consistent
-- Write dates like YYYYMMDD (consider splitting into YYYY-MM-DD)
-- Do not leave empty values (use code for missingness common in the programming language you will use; for Python: `None` or `NaN` - see [this chapter for more information on missingness in pandas](https://jakevdp.github.io/PythonDataScienceHandbook/03.04-missing-values.html))
-- Put as little information as possible in a single cell and one observation per row
-- Create a data dictionary that describes the spreadsheet and any cleaning steps you took
 - Leave the raw data alone!
+- Be consistent
+- Put variables in columns
+- Put observations in rows
+- Put as little information as possible in a single cell
+- Avoid spaces and special characters
+- Use controlled vocabularies and standards (e.g. for dates)
+- Create documentation (e.g. README and data dictionary)
+- Think about how to code missing vales (and add that in the documentation!)
 - Do not use formatting (colours, font, bolding)
 - Use data validation to avoid errors (Frictionless Data framework)
 
 ---
 
-# Tidy data (R)
-
-In tidy data:
-- each variable forms a column
-- each observation forms a row
-- each cell is a single measurement
-
----
-
-# Dataset for the workshop
-
-The Portal Project Teaching Database
-
-- Continuous data collection since 1977
-- Site: part of the Chihuahuan Desert in the USA. 20 hectares split in 24 experimental plots
-- Species: rodents
-- a simplified version of the Portal Project Data (https://doi.org/10.5281/zenodo.6374066)
-- variables:
-
----
-
-# Exercise
-
-🕠 **10 mins**
+# Exercise 📝
 
 - Download the messy data
 - Open up the data in a spreadsheet programme
-- Notice that there are two tabs. Two field assistants coducted the surveys, one in 2013 and one in 2014, and they both kept track of the data in their own ways in the tabs 2013 and 2014 of the dataset, respectively. Now you're the person in charge of this project and you want to be able to start analysing the data.
+- Notice the two tabs: Two RAs conducted the surveys, one in 2013 and one in 2014. They track of the data in their own way in the tabs 2013 and 2014 respectively. Now you're the person in charge of this project and you want to be able to start analysing the data.
 - You have 7 minutes to clean up as much of the dataset as you can.
 - Once the 7 minutes are up:
   - take a screenshot of your cleaned dataset
-  - add a comment describing what confused or annoyed you the most
-- Check the screenshots and comments of the other participants and give them a +1 if you like their solution/comment
+  - add a comment with what confused or annoyed you the most
+- Look at the posts of the other participants and give them a +1 if you like their solution/comment
 
-<div class="countdown" id="timer_6246d71b" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62571ffe" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -608,18 +1339,18 @@ The Portal Project Teaching Database
 
 # Exporting data in an open file format
 
-- Accessible: usable by multiple types of software that are freely available (e.g. note that Microsoft requires a paid licence)
-- Life expectancy: open file formats are more suitable for long-terms preservation because they don't rely ona single software programme
-- Publishing: data repositories, journals and funding agencies may have requirements for open file formats
-- Universal format: interoperable format that produces the same results when it is imported by various software programmes, including plain text editors
-- Tab/comma delimited: comma-separated value files (.csv) are plain text files where the columns are separated by commas
+- **Accessible**: usable by multiple types of software that are freely available (e.g. note that Microsoft requires a paid licence)
+- **Life expectancy**: open file formats are more suitable for long-terms preservation because they don't rely ona single software programme
+- **Publishing**: data repositories, journals and funding agencies may have requirements for open file formats
+- **Universal format**: interoperable format that produces the same results when it is imported by various software programmes, including plain text editors
+- **Comma delimited**: comma-separated value files (.csv) are plain text files where the columns are separated by commas
 
 ---
 
 # Exporting from Excel to .csv
 
 1. From the top menu, select `File` and `Save as`
-2. In the `Format` field select `Comma separated values (.csv)` from the list
+2. In the Format field select `CSV UTF-8 (Comma delimited) (.csv)` from the list
 3. Double check the file name and the location where you want to save the data and hit `Save`
 
 ---
@@ -630,7 +1361,40 @@ Enclose the data fields with double quotes and double check that the file you ar
 
 ---
 
+# Resources
+
+Metadata:
+- [FAIRsharing.org](https://fairsharing.org/)
+- [Digital Curation Centre](https://www.dcc.ac.uk/guidance/standards/metadata)
+- [Research Data Alliance Metadata Directory](https://rd-alliance.github.io/metadata-directory/standards/)
+
+Licences:
+- [Creative Commons licences (for data)](https://creativecommons.org/about/cclicenses/)
+- [OSI-approved licences (for code)](https://choosealicense.com/licenses/)
+
+
+---
+
 # References
+
+.small[
+
+Colavizza, G., I. Hrynaszkiewicz, I. Staden, et al. (2020). _The
+citation advantage of linking publications to research data_. Vol. 15.
+4 , p. e0230416. DOI:
+[10.1371/journal.pone.0230416](https://doi.org/10.1371%2Fjournal.pone.0230416).
+
+Ernest, M., J. Brown, T. Valone, et al. (2020). _Portal Project
+Teaching Database_. DOI:
+[10.6084/m9.figshare.1314459.v10](https://doi.org/10.6084%2Fm9.figshare.1314459.v10).
+
+Kelion, L. (2020). _Excel: Why using the Microsoft tool cause Covid-19
+results to be lost_. URL:
+[https://www.bbc.com/news/technology-54423988](https://www.bbc.com/news/technology-54423988).
+
+Lowndes, J. and A. Horst (2020). _Tidy data for efficiency,
+reproducibility and collaboration_. URL:
+[https://www.openscapes.org/blog/2020/10/12/tidy-data/](https://www.openscapes.org/blog/2020/10/12/tidy-data/).
 
 Markowetz, F. (2015). _Five selfish reasons to work reproducibly_. Vol.
 16.1 , p. 274. DOI:
@@ -641,17 +1405,37 @@ Nuijten, M. B., C. H. J. Hartgerink, M. A. L. M. van Assen, et al.
 (1985-2013)_. Vol. 48. 4 , pp. 1205-1226. DOI:
 [10.3758/s13428-015-0664-2](https://doi.org/10.3758%2Fs13428-015-0664-2).
 
+Silvester, N., B. Alako, C. Amid, et al. (2015). _Content discovery and
+retrieval services at the European Nucleotide Archive_. Vol. 43 , pp.
+D23-D29. DOI:
+[10.1093/nar/gku1129](https://doi.org/10.1093%2Fnar%2Fgku1129).
+
 The Turing Way Community (2021). _The Turing Way: A handbook for
 reproducible, ethical and collaborative research_. Version 1.0.1. DOI:
 [10.5281/zenodo.5671094](https://doi.org/10.5281%2Fzenodo.5671094).
+
+]
+
+---
+
+# References
+
+.small[
 
 The Turing Way Community and Scriberia (2021). _Illustrations from the
 Turing Way book dashes_. DOI:
 [10.5281/zenodo.5706310](https://doi.org/10.5281%2Fzenodo.5706310).
 
----
+Vincent, J. (2020). _Scientists rename human genes to stop Microsoft
+Excel from misreading them as dates_. URL:
+[https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates).
 
-# References
+White, E. P., E. Baldridge, Z. T. Brym, et al. (2013). _Nine simple
+ways to make it easier to (re)use your data_. Vol. 1.e7v2. DOI:
+[10.7287/peerj.preprints.7v2](https://doi.org/10.7287%2Fpeerj.preprints.7v2).
+
+Wickham, H. (2014). _Tidy Data_. Vol. 59.10 , pp. 1-23. DOI:
+[10.18637/jss.v059.i10](https://doi.org/10.18637%2Fjss.v059.i10).
 
 Wilkinson, M. D., M. Dumontier, I. J. Aalbersberg, et al. (2016). _The
 FAIR Guiding Principles for scientific data management and
@@ -661,9 +1445,12 @@ stewardship_. Vol. 3.1 , p. 160018. DOI:
 Ziemann, M., Y. Eren, and A. El-Osta (2016). _Gene name errors are
 widespread in the scientific literature_. Vol. 17. 1 , p. 177. DOI:
 [10.1186/s13059-016-1044-7](https://doi.org/10.1186%2Fs13059-016-1044-7).
+
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="cols_macro.js"></script>
 <script>var slideshow = remark.create({
 "slideNumberFormat": "%current%",
 "highlightStyle": "github",

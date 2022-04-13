@@ -4,8 +4,9 @@ author: "Eirini Zormpa"
 date: "28 April 2022 *(Updated: `r Sys.Date()`)*"
 output:
   xaringan::moon_reader:
-    css: xaringan-themer.css
+    css: [xaringan-themer.css, cols.css]
     nature:
+      beforeInit: "cols_macro.js"
       slideNumberFormat: "%current%"
       highlightStyle: github
       highlightLines: true
@@ -30,6 +31,9 @@ library(here)
 library(readxl)
 library(magrittr)
 library(kableExtra)
+library(tidyr)
+library(dplyr)
+library(lubridate)
 ```
 
 
@@ -66,16 +70,20 @@ style_duo(
 ---
 
 # Session outline
-- Reproducibility & FAIR data
-- Data organisation in spreadsheets
+- Reproducibility & the FAIR principles
+  - What is reproducibility and why is it important?
+  - What are the FAIR principles?
+- Data Carpentry: Data organisation for tabular data*
   - Good data entry practices
   - Formatting data tables in spreadsheets
-  - Importing and exporting data from spreadsheets
+  - Importing and exporting data
+
+.footnote[The content presented in this part comes from the Data Carpentry lesson *[Data Organization in Spreadsheets for Ecologists](https://datacarpentry.org/spreadsheet-ecology-lesson/)* and is used under a [CC-BY licence](https://creativecommons.org/licenses/by/4.0/).]
 
 ---
 class: center, middle, inverse
 
-# Reproducibility & FAIR data
+# Reproducibility & the FAIR principles
 
 ---
 
@@ -217,7 +225,8 @@ Sharing and documenting your data and code well:
 
 --
 
-- helps you build a reputation as an honest and careful researcher
+- helps you build a reputation as an honest and careful researcher.
+This could be contributing to a **citation advantage** of about 25% for publications with linked data (Colavizza *et al.*, 2020). `r NoCite(bib, "colavizza_2020")`
 
 --
 
@@ -225,7 +234,7 @@ Sharing and documenting your data and code well:
 
 ---
 
-# Conclusion
+# Interim summary 1
 
 Working reproducibly doesn't mean that there will definitely not be any mistakes in your work.
 But it does make it easier to figure out what went wrong and, by extension, to fix it.
@@ -244,8 +253,6 @@ And it can help others build on your work and build your reputation.
 
 Looking at this matrix again, it becomes obvious that for reproducibility to be possible, it is necessary to be able to get a **copy of the data and code**.
 
---
-
 <!-- TODO: figure out how to get the parenthetical citation working-->
 
 Additionally, code and data need to be **Findable**, **Accessible**, **Interoperable**, and **Reusable**, or in short FAIR (`r NoCite(bib, "wilkinson_2016")`Wilkinson *et al.*, 2016).
@@ -263,7 +270,7 @@ First people need to be able to find the data!
 --
 
 For data to be findable, they need to be described with **rich metadata**, or information about data.
-These metadata can be generic (e.g. author name, keywords) or discipline specific.
+These metadata can be generic (e.g. title, author name, keywords) or discipline specific.
 
 --
 
@@ -286,6 +293,8 @@ This could mean that the data are publicly available in a **data repository**, l
 
 If you're working with personal data, classified data, or other sensitive information, you may need to keep the data restricted and require authentication or authorisation before others can access the data.
 
+--
+
 In those cases, **metadata should still be accessible**.
 
 ---
@@ -296,9 +305,89 @@ Data often need to be integrated with other data.
 
 This integration is easier when data make reference to other **relevant datasets**.
 
+--
+
 It's also important to make data available in **open file formats**, that anyone can open.
 
+--
+
 Using **controlled vocabularies** is also highly recommended, if these exist in your field.
+
+---
+
+# In how many different ways can you sat "female"?*
+
+![:col_row 
+
+18-day pregnant females <br>
+female (lactating) <br>
+individual female <br>
+worker caste (female) <br>
+2 yr old female <br>
+female (pregnant) <br>
+sex: female <br>
+400 yr. old female <br>
+female (outbred) <br>
+mare <br>
+female (other) <br>
+adult female <br>
+female parent <br>
+female (worker) <br>
+female plant,
+<b>femal</b> <br>
+castrate female <br>
+female with eggs <br>
+ovigerous female <br>
+3 female <br>
+cf.female <br>
+female worker <br>
+oviparous sexual females <br>
+female (phenotype) <br>
+cystocarpic female <br>
+gynoecious <br>
+thelytoky <br>
+dikaryon <br>
+female virgin <br>
+dioecious female,
+femlale <br>
+female (gynoecious) <br>
+<b>remale</b> <br>
+metafemale <br>
+f <br>
+<b>femele</b> <br>
+sterile female <br>
+famale <br>
+normal female <br>
+<b>femail</b> <br>
+sf <br>
+female <br>
+females <br>
+tetraploid female <br>
+strictly female,
+females only <br>
+worker <br>
+hexaploid female <br>
+healthy female <br>
+female (gynoecious) <br>
+probably female <br>
+female (note: this sample was originally provided as a "male" sample and labeled this way in the paper and original submission; however analyses carried out in the meantime clearly show that this sample stems from a female individual)
+
+]
+
+.footnote[Adapted from Silvester *et al.*, 2015. `r NoCite(bib, "silvester_2015")`]
+
+---
+
+# Dates
+
+To avoid ambiguity, use the [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339) standard: **YYYYMMDD** (or YYYY-MM-DD).
+
+```{r date-formats, echo = FALSE, out.height="90%", out.width ="90%"}
+include_graphics("images/date-formats.png")
+```
+
+.footnote[This [image](https://en.m.wikipedia.org/wiki/File:Date_format_by_country_revised.svg) was created by cmglee, Canuckguy and many others for [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) and is used under a [CC-BY-SA licence](https://creativecommons.org/licenses/by-sa/4.0/)]
+
 
 ---
 
@@ -320,9 +409,31 @@ This means you need to provide good **documentation**:
 
 # Example of a README file
 
-```{r readme-example, echo = FALSE, out.height="55%", out.width ="55%"}
-include_graphics("images/readme.png")
-```
+.small[
+
+**The Portal Project Teaching Database**
+
+*Authors*: Morgan Ernest, James Brown, Thomas Valone, Ethan P. White
+
+**General introduction**
+
+The Portal Project Teaching Database is a simplified version of the [Portal Project Database](https://doi.org/10.5281/zenodo.6374066) designed for teaching. It provides a real world example of life-history, population, and ecological data, with sufficient complexity to teach many aspects of data analysis and management.
+
+- Time coverage: Continuous data collection since 1977
+- Site: 20 hectares split in 24 experimental plots in the Chihuahuan Desert (USA) 
+- Species: rodents
+
+**Purpose**
+
+This database is not designed for research as it intentionally removes some of the real-world complexities. The original database is published at [Ecological Archives](http://esapubs.org/archive/ecol/E090/118/) and that version should be used for research purposes.
+
+**Organisation**
+
+The Python code used for converting the original database to this teach version is included as 'create_portal_teach_dataset.py'.
+
+]
+
+`r NoCite(bib, "ernest_2020")`
 
 ---
 
@@ -368,9 +479,6 @@ messy_data %>% knitr::kable('html')
 ### It's quite hard to make sense of data without context...
 
 - what do the acronyms in `Species` stand for?
-
---
-
 - what is the unit of measurement for `Weight`?
 
 ]
@@ -429,133 +537,348 @@ include_graphics("images/fair-principles.jpg")
 
 ---
 
+# Interim summary 2
+
+Making your data and code Findable, Accessible, Interoperable and Reusable can take you a long way towards making your work reproducible.
+
+--
+
+There are many things you need to do to make your work FAIR, but:
+1. these things will benefit you
+2. you don't have to start doing **everything** immediately
+3. we're here to help `r emo::ji("handshake")` `r emo::ji("sparkles")` In this workshop you'll learn good practices for working with tabular data, how to generate and add metadata to your data, how to validate your data, and how to publish your data in a data repository.
+
+--
+
+So let's get started `r emo::ji("tada")`
+
+---
+
 class: center, middle, inverse
 
-# Data organisation in spreadsheets
+# Data Carpentry: Data organisation for tabular data
 
 ---
 
-# Software needed
-
-.pull-left[
-Microsoft Excel
-
-```{r microsoft-excel, echo = FALSE, out.height="60%", out.width ="60%"}
-include_graphics("images/microsoft-excel.png")
-```
-]
-
-.pull-right[
-Libre Office
-
-```{r libre-office, echo = FALSE}
-include_graphics("images/libre-office.png")
-```
-]
-
----
-
-# Spreadsheets
+# Tabular data
 
 .pull-left[
 
-### Pros `r emo::ji("thumbs_up_medium_light_skin_tone")` 
+Most researchers work with **tabular data** for their research, so knowing how to organise this type of data well is fundamental.
 
-- Easy to use
-- Good for data entry
-- Can be handy for producing "quick and dirty" summary statistics and figures
+<br>
+
+Tabular data refers to "rectangular tables made up of *rows* and *columns*" (Wickham, 2014).
+`r NoCite(bib, "wickham_2014")`
 ]
 
-.pull-right[
-### Cons `r emo::ji("thumbs_down_medium_light_skin_tone")`
+--
 
-- `r emo::ji("warning")` A lot of manual work
-  - Easy to make mistakes (accidental deletions, formula misapplications, copy pasting errors)
-  - Not reproducible (including errors)
-- Non machine-readable formatting
-- Data importing issues (dates, special characters)
+.pull-right[
+
+.small[
+
+```{r tabular-data, echo = FALSE}
+messy_data %>% knitr::kable('html')
+```
+
+]
+
 ]
 
 ---
 
-# Manual work
+# Tidy data
+
+A good framework for working with tabular data is that of **tidy data**. The concept of tidy data is borrowed from `R` and the `tidyverse` packages within it (Wickham, 2014).
+
+```{r what-is-tidy-data, echo = FALSE, out.height="85%", out.width ="85%"}
+include_graphics("images/tidy-data-1.jpg")
+```
+
+.footnote[llustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst. `r NoCite(bib, "lowndes_2020")`]
+
+---
+
+# Tidy data
+
+```{r tidy-data, echo = FALSE, out.height="100%", out.width ="100%"}
+include_graphics("images/tidy-data-2.jpg")
+```
+
+.footnote[llustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst. `r NoCite(bib, "lowndes_2020")`]
+
+---
+
+# Why tidy data?
+
+Using a consistent way to organise your data, e.g. following the tidy data structure, helps you be more **efficient** when working with your data.
+That's because you can create (and reuse) tools that expect that kind of structure instead of starting from scratch every time.
+
+<br>
+<br>
+<br>
+
+--
+
+Like `R`, `NumPy` and `pandas` can use vectorised processes that make working with large datasets more efficient.
+Placing variables in columns makes using vectorised processes easier.
+
+
+---
+
+# Example 1
+
+.small[
+
+.pull-left[
+
+```{r long-data1, echo = FALSE}
+messy_data %>% knitr::kable('html')
+```
+
+]
+
+]
+
+--
+
+**Summary (long)**
+
+.small[
+
+.pull-right[
+
+```{r long-data2, echo = FALSE, message = FALSE}
+messy_data %>% 
+  group_by(Species, Sex) %>%
+  filter(!is.na(Weight)) %>% 
+  summarise(`Mean weight` = round(mean(Weight), 2)) %>% 
+  knitr::kable('html')
+```
+
+
+]
+
+]
+
+--
+
+**Summary (wide)**
+
+.small[
+
+.pull-right[
+
+
+```{r wide-data, echo = FALSE, message = FALSE}
+messy_data %>% 
+  group_by(Species, Sex) %>%
+  filter(!is.na(Weight)) %>% 
+  summarise(`Mean weight` = round(mean(Weight), 2)) %>%
+  pivot_wider(names_from = Species,
+              values_from = `Mean weight`) %>% 
+  knitr::kable('html')
+```
+
+]
+
+]
+
+---
+
+# Example 2
+
+.small[
+
+.pull-left[
+
+```{r multiple-observations, echo = FALSE}
+messy_data %>% knitr::kable('html')
+```
+
+]
+
+]
+
+--
+
+.small[
+
+.pull-left[
+
+```{r single-observations, echo = FALSE}
+messy_data %>%
+  mutate(Year = year(`Date collected`),
+         Month = month(`Date collected`),
+         Day = day(`Date collected`)) %>%
+  select(Year, Month, Day, Species, Sex, Weight) %>% 
+  knitr::kable('html')
+```
+
+]
+
+]
+
+---
+
+# `r emo::ji("warning")` Keep your data tidy from the start
+
+How you collect your data will vary depending on your field and specific project:
+- If you can control how the data is created, make sure you use the tidy data structure **from the beginning**.
+- If you cannot control how the raw data is structured, wrangle it into the tidy format, ideally using a **scripted programming language**, like Python or R.
+
+---
+
+# Spreadsheet programmes (e.g. Microsoft Excel)
+
+Researchers often use spreadsheet programmes like Microsoft Excel to work with their tabular data.
+
+
+Although such programmes are good for some things, they aren't always appropriate...
+
+--
+
+```{r excel-issues-covid, echo = FALSE, out.height="80%", out.width ="80%"}
+include_graphics("images/excel-covid.png")
+```
+
+For example, when **16000** COVID cases went unreported in England when the old .xls file format ran out of rows. `r NoCite(bib, "kelion_2020")`
+
+---
+
+# Problems with Excel
+
+### `r emo::ji("no_entry")` Data wrangling, visualisation & analysis
+
+--
+
+- easy to make mistakes (accidental deletions, misapplying formulas)
+
+--
+
+- not reproducible (including mistakes)
+
+--
+
+**Never edit your raw data in Excel!!!**
+
+--
+
+### `r emo::ji("warning")` Data entry
+
+--
+
+- data importing and exporting problems
+
+--
+
+- non machine-readable formatting
+
+---
+
+# Data importing and exporting problems
+
+We've known since **2016** that many genetics papers (**1 in 5**) have mistakes because Microsoft Excel interprets gene names as dates.
+
+--
+
+```{r excel-issues-genes, echo = FALSE, out.height="100%", out.width ="100%"}
+include_graphics("images/vincent_2020.png")
+```
+
+`r NoCite(bib, "vincent_2020")`
+
+--
+
+ Also, for any **language scientists** out there working with a language that's not English, always use **UTF-8 text encoding**.
 
 ---
 
 # Non machine-readable formatting
 
-Software can't process information that:
-- relies on context
+We often organise data the way we humans like to work, i.e. by relying on **context**.
+That doesn't work for software like Python or R that we use to analyse data.
+So we need to structure our data in a way computers can understand.
+
+--
+
+### Non machine-readable formatting includes:
+
+--
+
 - notes in the margin
+
+--
+
 - spatial layout of data
+
+--
+
 - field formatting
 
-to convey information
+--
+
+- using special characters
 
 ---
 
-# Data importing issues
+```{css, echo = FALSE}
+/* I need a medium font size :) */
 
-Scientists rename human genes to stop Microsoft Excel from misreading them as dates
+.medium { font-size: 90% }
+
+```
+
+# How to code missing values*
+
+.medium[
+
+| Null value | Problems               | Compatibility  | Recommendation |
+|------------|:----------------------:|---------------:|---------------:|
+| 0          | Looks like true 0      |                | Never use      |
+| blank      | Could be an oversight  | R, Python, SQL | Best option    |
+| 999, -999  | Not recognised as null |                | Avoid          |
+| NA, na     | Can be abbreviation    | R              | Good option    |
+| N/A        | Often incompatible     |                | Avoid          |
+| NULL       | Data type issues       | SQL            | Good option    |
+| None       | Data type issues       | Python         | Avoid          |
+| No data    | Data type issues       |                | Avoid          |
+| Missing    | Data type issues       |                | Avoid          |
+| -, +, .    | Data type issues       |                | Avoid          |
+
+]
+
+.footnote[Adapted slightly from White *et al.* (2013) `r NoCite(bib, "white_2013")`]
 
 ---
 
-# A better way is possible!
+# Summary: Tips for structuring tabular data
 
-Data is stored in cells, coluumnsm and rows
-
-- Each box is a cell
-- Each column is a specific data feature
-- Each row is an individual observation
-
----
-
-# Create spreadsheets that are less error-prone, easier for computers to process, and easier to share
-
-- Be consistent
-- Write dates like YYYYMMDD (consider splitting into YYYY-MM-DD)
-- Do not leave empty values (use code for missingness common in the programming language you will use; for Python: `None` or `NaN` - see [this chapter for more information on missingness in pandas](https://jakevdp.github.io/PythonDataScienceHandbook/03.04-missing-values.html))
-- Put as little information as possible in a single cell and one observation per row
-- Create a data dictionary that describes the spreadsheet and any cleaning steps you took
 - Leave the raw data alone!
+- Be consistent
+- Put variables in columns
+- Put observations in rows
+- Put as little information as possible in a single cell
+- Avoid spaces and special characters
+- Use controlled vocabularies and standards (e.g. for dates)
+- Create documentation (e.g. README and data dictionary)
+- Think about how to code missing vales (and add that in the documentation!)
 - Do not use formatting (colours, font, bolding)
 - Use data validation to avoid errors (Frictionless Data framework)
 
 ---
 
-# Tidy data (R)
-
-In tidy data:
-- each variable forms a column
-- each observation forms a row
-- each cell is a single measurement
-
----
-
-# Dataset for the workshop
-
-The Portal Project Teaching Database
-
-- Continuous data collection since 1977
-- Site: part of the Chihuahuan Desert in the USA. 20 hectares split in 24 experimental plots
-- Species: rodents
-- a simplified version of the Portal Project Data (https://doi.org/10.5281/zenodo.6374066)
-- variables:
-
----
-
-# Exercise
-
-`r emo::ji("clock")` **10 mins**
+# Exercise `r emo::ji("memo")`
 
 - Download the messy data
 - Open up the data in a spreadsheet programme
-- Notice that there are two tabs. Two field assistants coducted the surveys, one in 2013 and one in 2014, and they both kept track of the data in their own ways in the tabs 2013 and 2014 of the dataset, respectively. Now you're the person in charge of this project and you want to be able to start analysing the data.
+- Notice the two tabs: Two RAs conducted the surveys, one in 2013 and one in 2014. They track of the data in their own way in the tabs 2013 and 2014 respectively. Now you're the person in charge of this project and you want to be able to start analysing the data.
 - You have 7 minutes to clean up as much of the dataset as you can.
 - Once the 7 minutes are up:
   - take a screenshot of your cleaned dataset
-  - add a comment describing what confused or annoyed you the most
-- Check the screenshots and comments of the other participants and give them a +1 if you like their solution/comment
+  - add a comment with what confused or annoyed you the most
+- Look at the posts of the other participants and give them a +1 if you like their solution/comment
 
 `r countdown::countdown(minutes = 7, color_running_background  = "lightgreen", color_running_text = "black", color_finished_background = "red", color_finished_text =  "grey30")`
 
@@ -563,18 +886,18 @@ The Portal Project Teaching Database
 
 # Exporting data in an open file format
 
-- Accessible: usable by multiple types of software that are freely available (e.g. note that Microsoft requires a paid licence)
-- Life expectancy: open file formats are more suitable for long-terms preservation because they don't rely ona single software programme
-- Publishing: data repositories, journals and funding agencies may have requirements for open file formats
-- Universal format: interoperable format that produces the same results when it is imported by various software programmes, including plain text editors
-- Tab/comma delimited: comma-separated value files (.csv) are plain text files where the columns are separated by commas
+- **Accessible**: usable by multiple types of software that are freely available (e.g. note that Microsoft requires a paid licence)
+- **Life expectancy**: open file formats are more suitable for long-terms preservation because they don't rely ona single software programme
+- **Publishing**: data repositories, journals and funding agencies may have requirements for open file formats
+- **Universal format**: interoperable format that produces the same results when it is imported by various software programmes, including plain text editors
+- **Comma delimited**: comma-separated value files (.csv) are plain text files where the columns are separated by commas
 
 ---
 
 # Exporting from Excel to .csv
 
 1. From the top menu, select `File` and `Save as`
-2. In the `Format` field select `Comma separated values (.csv)` from the list
+2. In the Format field select `CSV UTF-8 (Comma delimited) (.csv)` from the list
 3. Double check the file name and the location where you want to save the data and hit `Save`
 
 ---
@@ -585,16 +908,38 @@ Enclose the data fields with double quotes and double check that the file you ar
 
 ---
 
-# References
+# Resources
 
-```{r references-1, results='asis', echo=FALSE}
-PrintBibliography(bib, start = 1, end = 4)
-```
+Metadata:
+- [FAIRsharing.org](https://fairsharing.org/)
+- [Digital Curation Centre](https://www.dcc.ac.uk/guidance/standards/metadata)
+- [Research Data Alliance Metadata Directory](https://rd-alliance.github.io/metadata-directory/standards/)
+
+Licences:
+- [Creative Commons licences (for data)](https://creativecommons.org/about/cclicenses/)
+- [OSI-approved licences (for code)](https://choosealicense.com/licenses/)
+
 
 ---
 
 # References
 
-```{r references-2, results='asis', echo=FALSE}
-PrintBibliography(bib, start = 5, end = 6)
+.small[
+
+```{r references-1, results='asis', echo=FALSE}
+PrintBibliography(bib, start = 1, end = 8)
 ```
+
+]
+
+---
+
+# References
+
+.small[
+
+```{r references-2, results='asis', echo=FALSE}
+PrintBibliography(bib, start = 9, end = 14)
+```
+
+]
