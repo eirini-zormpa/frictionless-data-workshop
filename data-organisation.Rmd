@@ -95,7 +95,7 @@ include_graphics("images/reproducible-matrix.jpg")
 
 <!-- TODO: figure out how to get the parenthetical citation working-->
 
-.footnote[Image from [The Turing Way: A Handbook for Reproducible Data Science](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions) `r NoCite(bib, "the_turing_way_community_2021")` (The Turing Way Community, 2021)]
+.footnote[Image from [The Turing Way: A Handbook for Reproducible Data Science](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions) `r NoCite(bib, "the_turing_way_community_2021")` (The Turing Way Community, 2021) used under a [CC-BY licence](https://creativecommons.org/licenses/by/4.0/).]
 
 ---
 
@@ -251,7 +251,7 @@ And it can help others build on your work and build your reputation.
 
 # FAIR and open data and code
 
-Looking at this matrix again, it becomes obvious that for reproducibility to be possible, it is necessary to be able to get a **copy of the data and code**.
+Looking at this matrix again, it's clear that for reproducibility to be possible, it is necessary to be able to get a **copy of the data and code**.
 
 <!-- TODO: figure out how to get the parenthetical citation working-->
 
