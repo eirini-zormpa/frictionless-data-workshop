@@ -315,7 +315,7 @@ Using **controlled vocabularies** is also highly recommended, if these exist in 
 
 ---
 
-# In how many different ways can you sat "female"?*
+# In how many different ways can you say "female"?*
 
 ![:col_row 
 
