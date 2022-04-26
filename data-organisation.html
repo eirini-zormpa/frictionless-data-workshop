@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 
 # Reproducible RDM workflows for tabular data
 ### Eirini Zormpa
-### 28 April 2022 <em>(Updated: 2022-04-14)</em>
+### 28 April 2022 <em>(Updated: 2022-04-26)</em>
 
 ---
 
@@ -277,7 +277,7 @@ Using **controlled vocabularies** is also highly recommended, if these exist in 
 
 ---
 
-# In how many different ways can you sat "female"?*
+# In how many different ways can you say "female"?*
 
 ![:col_row 
 
@@ -1331,20 +1331,57 @@ So we need to structure our data in a way computers can understand.
   - add a comment with what confused or annoyed you the most
 - Look at the posts of the other participants and give them a +1 if you like their solution/comment
 
-<div class="countdown" id="timer_6257d428" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_6267ad5e" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
 
-# Exporting data in an open file format
+# Using open file formats
 
 - **Accessible**: usable by multiple types of software that are freely available (e.g. note that Microsoft requires a paid licence)
 - **Life expectancy**: open file formats are more suitable for long-terms preservation because they don't rely ona single software programme
 - **Publishing**: data repositories, journals and funding agencies may have requirements for open file formats
 - **Universal format**: interoperable format that produces the same results when it is imported by various software programmes, including plain text editors
-- **Comma delimited**: comma-separated value files (.csv) are plain text files where the columns are separated by commas
 
+
+---
+
+# Which open file format 🤔?
+
+- **Comma delimited**: comma-separated value files (.csv) are plain text files where the columns are separated by commas
+- **Tab delimited**: tab-separated value files (.tsv) are plain text files where the columns are separated by tabs (\t)
+
+---
+
+# Which open file format? 🤔
+
+.pull-left[
+
+### Comma delimited
+
+comma-separated value files (.csv) are plain text files where the columns are separated by commas
+
+👍🏼 commonly used
+
+👎🏼 annoying when data itself contains commas
+
+]
+
+--
+
+.pull-right[
+
+### Tab delimited
+
+tab-separated value files (.tsv) are plain text files where the columns are separated by tabs (\t)
+
+
+👍🏼 no confusion when data contains commas or semicolons
+
+👎🏼 not very commonly used (at least not yet)
+
+]
 ---
 
 # Exporting from Excel to .csv
@@ -1353,11 +1390,20 @@ So we need to structure our data in a way computers can understand.
 2. In the Format field select `CSV UTF-8 (Comma delimited) (.csv)` from the list
 3. Double check the file name and the location where you want to save the data and hit `Save`
 
----
+--
 
-# My data contains commas!
+### My data contains commas!
 
 Enclose the data fields with double quotes and double check that the file you are exporting can be read in correctly.
+
+---
+
+# Exporting from Excel to .tsv
+
+1. From the top menu, select `File` and `Save as`
+2. In the Format field select `Text (Tab delimited) (.txt)` from the list
+3. Double check the file name and the location where you want to save the data and hit `Save`
+4. Rename the file you just saved and change the extension from `.txt` to `.tsv`
 
 ---
 
