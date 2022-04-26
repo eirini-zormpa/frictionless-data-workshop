@@ -891,14 +891,6 @@ So we need to structure our data in a way computers can understand.
 - **Publishing**: data repositories, journals and funding agencies may have requirements for open file formats
 - **Universal format**: interoperable format that produces the same results when it is imported by various software programmes, including plain text editors
 
-
----
-
-# Which open file format `r emo::ji("thinking")`?
-
-- **Comma delimited**: comma-separated value files (.csv) are plain text files where the columns are separated by commas
-- **Tab delimited**: tab-separated value files (.tsv) are plain text files where the columns are separated by tabs (\t)
-
 ---
 
 # Which open file format? `r emo::ji("thinking")`
@@ -929,6 +921,7 @@ tab-separated value files (.tsv) are plain text files where the columns are sepa
 `r emo::ji("thumbs_down_medium_light_skin_tone")` not very commonly used (at least not yet)
 
 ]
+
 ---
 
 # Exporting from Excel to .csv
