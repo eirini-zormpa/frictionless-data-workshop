@@ -487,12 +487,12 @@ messy_data %>% knitr::kable('html')
 
 # Example of a data dictionary
 
-- `Data collected`: the date the data were collected in YYYY-MM-DD format
-- `Species`: a code for the species of the animal detected See below for a table of what the codes stand for
-- `Sex`: the sex of the animal detected `M` for male and `F` for female
+- `Date collected`: the date the data were collected in YYYY-MM-DD format
+- `Species`: a code for the species of the animal detected. See below for a table of what the codes stand for
+- `Sex`: the sex of the animal detected, `M` for male and `F` for female
 - `Weight`: the weight of the animal detected measured in grams 
 
-Missing data is coded as `NA`.
+Missing data are coded as `NA`.
 
 | species code | scientific name     | common name                |
 |--------------|:-------------------:|---------------------------:|
@@ -504,7 +504,7 @@ Missing data is coded as `NA`.
 
 # Reusable (cont'd) `r emo::ji("recycle")`
 
-Another crucial component to reusability is **usage licences**.
+Another crucial component of reusability is **usage licences**.
 Just because something is shared online, doesn't mean anyone can use it.
 That's because the creator* of the work holds the copyright to it.
 
@@ -520,7 +520,7 @@ You do this by providing a usage licence.
 --
 
 Note that usage licences are different for data and for code:
-- Commonly used licences for data, presenations, papers etc. are the [Creative Commons licences](https://creativecommons.org/about/cclicenses/)
+- Commonly used licences for data, presentations, papers etc. are the [Creative Commons licences](https://creativecommons.org/about/cclicenses/)
 - For code, you can check [a list of OSI-approved licences](https://choosealicense.com/licenses/)
 
 ---
@@ -621,7 +621,7 @@ That's because you can create (and reuse) tools that expect that kind of structu
 
 --
 
-Like `R`, `NumPy` and `pandas` can use vectorised processes that make working with large datasets more efficient.
+Like `R`, `NumPy` and `pandas` can use vectorised processes that make working with large datasets more effcient and faster.
 Placing variables in columns makes using vectorised processes easier.
 
 
@@ -725,8 +725,8 @@ messy_data %>%
 # `r emo::ji("warning")` Keep your data tidy from the start
 
 How you collect your data will vary depending on your field and specific project:
-- If you can control how the data is created, make sure you use the tidy data structure **from the beginning**.
-- If you cannot control how the raw data is structured, wrangle it into the tidy format, ideally using a **scripted programming language**, like Python or R.
+- If you can control how the data are created, make sure you use the tidy data structure **from the beginning**.
+- If you cannot control how the raw data are structured, wrangle them into the tidy format, ideally using a **scripted programming language**, like Python or R.
 
 ---
 
@@ -791,7 +791,7 @@ include_graphics("images/vincent_2020.png")
 
 --
 
- Also, for any **language scientists** out there working with a language that's not English, always use **UTF-8 text encoding**.
+Also, for any **language scientists** out there working with a language that's not English, always use **UTF-8 text encoding**.
 
 ---
 
@@ -819,7 +819,7 @@ So we need to structure our data in a way computers can understand.
 
 --
 
-- using special characters
+- using special characters and spaces
 
 ---
 
@@ -871,9 +871,9 @@ So we need to structure our data in a way computers can understand.
 
 # Exercise `r emo::ji("memo")`
 
-- Download the messy data
+- Download the [messy data](https://ndownloader.figshare.com/files/2252083)
 - Open up the data in a spreadsheet programme
-- Notice the two tabs: Two RAs conducted the surveys, one in 2013 and one in 2014. They track of the data in their own way in the tabs 2013 and 2014 respectively. Now you're the person in charge of this project and you want to be able to start analysing the data.
+- Notice the two tabs: Two RAs conducted surveys, one in 2013 and one in 2014. They kept track of the data in their own way in the tabs 2013 and 2014 respectively. Now you're the person in charge of this project and you want to start analysing the data.
 - You have 7 minutes to clean up as much of the dataset as you can.
 - Once the 7 minutes are up:
   - take a screenshot of your cleaned dataset
@@ -887,13 +887,24 @@ So we need to structure our data in a way computers can understand.
 # Using open file formats
 
 - **Accessible**: usable by multiple types of software that are freely available (e.g. note that Microsoft requires a paid licence)
+
+--
+
 - **Life expectancy**: open file formats are more suitable for long-terms preservation because they don't rely ona single software programme
+
+--
+
 - **Publishing**: data repositories, journals and funding agencies may have requirements for open file formats
+
+--
+
 - **Universal format**: interoperable format that produces the same results when it is imported by various software programmes, including plain text editors
 
 ---
 
 # Which open file format? `r emo::ji("thinking")`
+
+--
 
 .pull-left[
 
