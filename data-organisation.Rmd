@@ -627,7 +627,7 @@ Placing variables in columns makes using vectorised processes easier.
 
 ---
 
-# Example 1
+# Example
 
 .small[
 
@@ -678,41 +678,6 @@ messy_data %>%
   summarise(`Mean weight` = round(mean(Weight), 2)) %>%
   pivot_wider(names_from = Species,
               values_from = `Mean weight`) %>% 
-  knitr::kable('html')
-```
-
-]
-
-]
-
----
-
-# Example 2
-
-.small[
-
-.pull-left[
-
-```{r multiple-observations, echo = FALSE}
-messy_data %>% knitr::kable('html')
-```
-
-]
-
-]
-
---
-
-.small[
-
-.pull-left[
-
-```{r single-observations, echo = FALSE}
-messy_data %>%
-  mutate(Year = year(`Date collected`),
-         Month = month(`Date collected`),
-         Day = day(`Date collected`)) %>%
-  select(Year, Month, Day, Species, Sex, Weight) %>% 
   knitr::kable('html')
 ```
 
